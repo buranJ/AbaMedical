@@ -24,7 +24,7 @@ export default function ServicesPage() {
           <a className="catalog-hero-link mt-8" href="#consultation">Обсудить задачу <ArrowRight size={18} /></a>
         </div>
         <figure className="services-hero-image">
-          <Image src="/images/company/event.webp" alt="Обучающее мероприятие ABA Medical для врачей" fill priority sizes="(max-width: 1024px) 100vw, 48vw" className="object-cover" />
+          <Image src="/images/company/event.webp" alt="Обучающее мероприятие ABA Medical для врачей" fill priority quality={90} sizes="(max-width: 1024px) 100vw, 48vw" className="clinical-event-photo object-cover" />
           <figcaption><strong>Практические знания</strong><span>Мероприятия для медицинских специалистов</span></figcaption>
         </figure>
       </div>

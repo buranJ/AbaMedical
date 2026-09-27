@@ -75,7 +75,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             <p className="lede mt-4 max-w-3xl">{current.description}</p>
             <div className="category-hero-meta"><span><strong>{items.length}</strong> позиций в каталоге</span>{children.length > 0 && <span><strong>{children.length}</strong> категории</span>}</div>
           </div>
-          <div className="category-hero-image relative min-h-64 overflow-hidden lg:min-h-full"><Image src={directionImages[category.slug]} alt={`Направление: ${category.title}`} fill priority sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" /><span>{category.title}</span></div>
+          <div className="category-hero-image relative min-h-64 overflow-hidden lg:min-h-full"><Image src={directionImages[category.slug]} alt={`Направление: ${category.title}`} fill priority quality={90} sizes="(max-width: 1024px) 100vw, 40vw" className="content-photo object-cover" /><span>{category.title}</span></div>
         </div>
 
         {children.length > 0 && (

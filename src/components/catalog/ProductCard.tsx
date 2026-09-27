@@ -16,7 +16,7 @@ export function ProductCard({ product, compareControl }: { product: Product; com
   return (
     <article className="product-card">
       <div className="product-card-media">
-        <ProductImage src={product.image} alt={product.title} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-contain p-7" />
+        <ProductImage src={product.image} alt={product.title} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-contain" />
         <div className="product-card-compare">{compareControl}</div>
         {product.brand && <span className="product-brand">{product.brand}</span>}
       </div>

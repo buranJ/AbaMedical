@@ -106,18 +106,16 @@ export function HeroShowcase() {
         </div>
 
         <div className="hero-concept-image" onTouchStart={(event) => { touchStartX.current = event.touches[0]?.clientX ?? null; }} onTouchEnd={(event) => finishSwipe(event.changedTouches[0]?.clientX ?? 0)}>
-          {slides.map((slide, index) => (
-            <Image
-              key={slide.id}
-              src={slide.image}
-              alt={index === activeIndex ? slide.imageAlt : ""}
-              fill
-              preload={index === 0}
-              quality={95}
-              sizes="(max-width: 900px) 100vw, 58vw"
-              className={`object-cover hero-slider-image${index === activeIndex ? " is-active" : ""}`}
-            />
-          ))}
+          <Image
+            key={activeSlide.id}
+            src={activeSlide.image}
+            alt={activeSlide.imageAlt}
+            fill
+            preload={activeIndex === 0}
+            quality={95}
+            sizes="(max-width: 900px) 100vw, (min-width: 1440px) 800px, 58vw"
+            className="object-cover hero-slider-image is-active"
+          />
           <div className="hero-slider-controls" aria-label="Переключение слайдов">
             <button type="button" onClick={showPrevious} aria-label="Предыдущий слайд">
               <ArrowLeft size={20} />

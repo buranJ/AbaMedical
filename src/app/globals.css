@@ -897,8 +897,8 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .hero-slider-copy { animation: hero-copy-in .42s cubic-bezier(.2,.75,.25,1) both; }
 .hero-slider-copy > p:not(.eyebrow) { max-width: 37rem; margin-top: 1.5rem; color: #657086; font-size: clamp(1rem, 1.5vw, 1.16rem); line-height: 1.7; }
 .hero-slider .hero-concept-image { min-height: 760px; background: #e7edf4; isolation: isolate; }
-.hero-slider-image { z-index: 0; opacity: 0; transform: scale(1.025); transition: opacity .55s ease, transform 1s cubic-bezier(.2,.75,.25,1); }
-.hero-slider-image.is-active { z-index: 1; opacity: 1; transform: scale(1); }
+.hero-slider-image { z-index: 0; opacity: 0; transform: scale(1.015); }
+.hero-slider-image.is-active { z-index: 1; opacity: 1; transform: scale(1); animation: hero-image-in .55s cubic-bezier(.2,.75,.25,1) both; }
 .hero-slider .hero-editorial-caption { z-index: 3; animation: hero-caption-in .42s .08s ease both; }
 .hero-slider .hero-concept-actions a { border-radius: .75rem; }
 .hero-slider-controls { position: absolute; z-index: 4; bottom: 1.5rem; left: 1.5rem; display: flex; align-items: center; gap: .55rem; }
@@ -914,6 +914,10 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 @keyframes hero-caption-in {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-image-in {
+  from { opacity: .55; transform: scale(1.015); }
+  to { opacity: 1; transform: scale(1); }
 }
 @keyframes hero-proof-in {
   from { opacity: .35; }
@@ -950,7 +954,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 
 @media (prefers-reduced-motion: reduce) {
   .hero-slider-copy, .hero-slider .hero-editorial-caption, .hero-slider .hero-concept-proof { animation: none; }
-  .hero-slider-image { transform: none; transition: opacity .15s ease; }
+  .hero-slider-image { transform: none; animation: none; }
 }
 
 /* Three partner-section concepts with purpose-built mobile layouts. */

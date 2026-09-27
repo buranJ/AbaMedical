@@ -1113,12 +1113,18 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 /* Mobile experience: thumb-friendly navigation and shorter content paths. */
 .mobile-dock { display: none; }
 
+@media (min-width: 768px) {
+  .header-menu, .mobile-menu { display: none !important; }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
-  .header-menu, .mobile-menu { display: none; }
-  .header-shell { gap: .6rem; }
-  .header-shell > a img { width: clamp(128px, 16vw, 150px); }
+  .header-shell { display: grid; grid-template-columns: 174px minmax(0, 1fr) auto auto; gap: .7rem; }
+  .header-shell > a:first-child { width: 174px; min-width: 174px; margin-right: 0; }
+  .header-shell > a img { width: 174px; }
+  .header-shell > nav { min-width: 0; justify-content: center; }
   .header-shell nav > .nav-link:first-child { display: none; }
-  .nav-link { padding: 1.55rem .38rem; font-size: .66rem; }
+  .nav-link { padding: 1.55rem .34rem; font-size: .66rem; white-space: nowrap; }
+  .header-search-button, .header-cta { flex: none; }
   .header-cta { min-height: 38px; gap: .35rem; padding-inline: .7rem; font-size: .66rem; }
   .header-cta svg { width: 14px; height: 14px; }
   .catalog-mega { grid-template-columns: 210px 1fr; gap: 1.5rem; }
@@ -1129,6 +1135,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 }
 
 @media (max-width: 767px) {
+  .header-shell > nav, .header-cta { display: none; }
   .mobile-menu { position: fixed; z-index: 70; inset: 109px 0 0; width: 100%; max-height: none; overflow-y: auto; border: 0; padding: 1rem max(1rem, env(safe-area-inset-right)) calc(1.5rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); }
   .mobile-menu-content { display: grid; align-content: start; }
   .mobile-menu-content > a, .mobile-catalog > summary { min-height: 58px; cursor: pointer; list-style: none; }

@@ -1,0 +1,2 @@
+"use client";
+export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) { return <div className="section"><div className="container py-16 text-center"><p className="eyebrow">Ошибка</p><h1 className="heading mt-4">Не удалось загрузить страницу</h1><p className="lede mx-auto mt-5 max-w-xl">Попробуйте еще раз. Если ошибка повторится, свяжитесь с ABA Medical по телефону.</p><button className="btn btn-primary mt-8" onClick={reset}>Повторить</button></div></div>; }

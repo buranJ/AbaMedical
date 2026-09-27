@@ -1,0 +1,15 @@
+export const siteConfig = {
+  name: "ABA Medical",
+  legalName: "ОсОО «ABA Medical»",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://abamed.kg",
+  description: "Медицинское оборудование и расходные материалы для клиник и специалистов Кыргызстана.",
+  phone: "+996 555 291 291",
+  phoneHref: "+996555291291",
+  secondaryPhone: "+996 555 710 865",
+  email: "info@abamed.kg",
+  address: "Кыргызстан, Бишкек, ул. Исанова 79, каб. 801",
+  hours: "Понедельник–пятница, 09:00–18:00",
+  whatsapp: "https://wa.me/996555291291",
+  instagram: "https://instagram.com/abamedicalkg",
+  tiktok: "https://www.tiktok.com/@abamedical.kg",
+} as const;

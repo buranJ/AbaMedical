@@ -252,7 +252,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .btn-secondary { border-color: #cfd6e4; border-radius: .35rem; background: transparent; }
 .card { border-color: #dce2ec; border-radius: .5rem; box-shadow: none; }
 .header-accent { height: 3px; background: var(--brand-ribbon); }
-.site-header { padding: 0; border-bottom: 1px solid #dfe4ed; background: rgba(255,255,255,.97); backdrop-filter: blur(14px); }
+.site-header { isolation: isolate; z-index: 100; overflow: visible; padding: 0; border-bottom: 1px solid #dfe4ed; background: rgba(255,255,255,.97); backdrop-filter: blur(14px); }
 .header-utility { border-bottom: 1px solid #e8ebf1; background: #f7f8fa; color: #697187; font-size: .68rem; }
 .header-utility a, .header-utility span { display: inline-flex; align-items: center; gap: .4rem; }
 .header-shell { border: 0; border-radius: 0; background: transparent; padding-inline: 0; box-shadow: none; backdrop-filter: none; }
@@ -349,10 +349,10 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 
 /* Final design pass: stronger hierarchy, proof, editorial content and responsive commerce UI. */
 .nav-catalog-shell { align-self: stretch; display: flex; align-items: center; }
-.nav-catalog-link { gap: .35rem; }
-.nav-catalog-link span { color: #8b93a5; font-size: .8rem; transition: transform .2s ease; }
-.nav-catalog-link[aria-expanded="true"] span { transform: rotate(180deg); }
-.catalog-mega-wrap { position: absolute; z-index: 80; top: 100%; right: 0; left: 0; border-top: 1px solid #e5e8ee; border-bottom: 1px solid #d9dfe9; background: white; box-shadow: 0 26px 55px rgba(17,27,61,.13); animation: menu-in .18s ease-out both; }
+.nav-catalog-link { display: inline-flex; align-items: center; gap: .35rem; }
+.nav-catalog-link svg { flex: none; color: #8b93a5; transition: transform .2s ease; }
+.nav-catalog-link[aria-expanded="true"] svg { transform: rotate(180deg); }
+.catalog-mega-wrap { position: absolute; z-index: 120; top: 100%; right: 0; left: 0; max-height: calc(100vh - 94px); overflow-y: auto; border-top: 1px solid #e5e8ee; border-bottom: 1px solid #d9dfe9; background: white; box-shadow: 0 26px 55px rgba(17,27,61,.13); animation: menu-in .18s ease-out both; }
 .catalog-mega { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; padding-block: 2rem 2.25rem; }
 .catalog-mega-intro { border-right: 1px solid #e1e5ec; padding-right: 2rem; }
 .catalog-mega-intro h2 { margin-top: 1rem; font-size: 1.55rem; line-height: 1.13; font-weight: 820; letter-spacing: -.035em; }

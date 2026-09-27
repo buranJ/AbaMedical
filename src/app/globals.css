@@ -1166,9 +1166,18 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
   .hero-slider-controls { top: auto; right: 1rem; bottom: 1rem; left: 1rem; justify-content: space-between; }
   .hero-slider-controls button { width: 46px; height: 46px; }
 
-  .category-bento { display: flex; width: calc(100% + .625rem); gap: .75rem; overflow-x: auto; margin-right: -.625rem; padding: .2rem .625rem .8rem 0; scroll-padding-left: 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .category-bento::-webkit-scrollbar { display: none; }
-  .category-tile, .category-tile-1, .category-tile-2, .category-tile-3, .category-tile-4, .category-tile-5 { width: min(82vw, 330px); min-height: 285px; flex: 0 0 min(82vw, 330px); scroll-snap-align: start; }
+  #directions .category-bento { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; overflow: visible; margin-right: 0; padding: 0; }
+  #directions .category-tile, #directions .category-tile-1, #directions .category-tile-2, #directions .category-tile-3, #directions .category-tile-4, #directions .category-tile-5 { grid-column: auto; width: auto; min-height: 165px; border-radius: 1rem; box-shadow: 0 14px 32px rgba(17,27,61,.12); }
+  #directions .category-tile:first-child { grid-column: 1 / -1; min-height: 245px; }
+  #directions .category-tile > .relative { min-height: inherit; padding: 1rem; }
+  #directions .category-tile:first-child > .relative { padding: 1.25rem; }
+  #directions .category-tile:not(:first-child) .category-shade { background: linear-gradient(180deg, rgba(9,18,44,.08), rgba(9,18,44,.36) 42%, rgba(9,18,44,.94)); }
+  #directions .category-tile:not(:first-child) .category-icon { width: 2.5rem; height: 2.5rem; border-radius: .7rem; }
+  #directions .category-tile:not(:first-child) .category-icon svg { width: 19px; height: 19px; }
+  #directions .category-tile:not(:first-child) h3 { max-width: none; padding-right: 0; font-size: .93rem; line-height: 1.12; }
+  #directions .category-tile:not(:first-child) p { display: none; }
+  #directions .category-tile:not(:first-child) .category-open { position: absolute; top: 1rem; right: 1rem; display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; margin: 0; background: rgba(255,255,255,.14); font-size: 0; opacity: 1; backdrop-filter: blur(8px); }
+  #directions .category-tile:not(:first-child) .category-open svg { width: 16px; height: 16px; }
 
   .product-card-media { min-height: 0; aspect-ratio: 1.55 / 1; }
   .product-card-body { padding: 1.05rem; }

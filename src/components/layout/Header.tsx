@@ -28,7 +28,7 @@ export function Header() {
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
-    const closeOnDesktop = () => { if (window.innerWidth >= 768) setOpen(false); };
+    const closeOnDesktop = () => { if (window.innerWidth >= 1024) setOpen(false); };
     document.body.style.overflow = "hidden";
     window.addEventListener("resize", closeOnDesktop);
     return () => {
@@ -39,10 +39,10 @@ export function Header() {
 
   return <header className={`site-header sticky top-0 z-50${compact ? " is-compact" : ""}`}>
     <div className="header-accent" aria-hidden />
-    <div className="header-utility hidden md:block"><div className="container flex min-h-8 items-center justify-between gap-6"><p>Медицинские технологии для клиник Кыргызстана</p><div className="flex items-center gap-6"><a href={`mailto:${siteConfig.email}`}><Mail size={13} />{siteConfig.email}</a><span>{siteConfig.hours}</span></div></div></div>
+    <div className="header-utility"><div className="container flex min-h-8 items-center justify-between gap-6"><p>Медицинские технологии для клиник Кыргызстана</p><div className="flex items-center gap-6"><a href={`mailto:${siteConfig.email}`}><Mail size={13} />{siteConfig.email}</a><span>{siteConfig.hours}</span></div></div></div>
     <div className="container header-shell flex min-h-[74px] items-center gap-5">
-      <Link href="/" className="mr-auto" aria-label="ABA Medical — главная"><Image className="h-auto w-[174px]" src="/images/brand/logo-cropped.png" alt="ABA Medical" width={720} height={164} priority /></Link>
-      <nav aria-label="Основная навигация" className="hidden items-center md:flex">
+      <Link href="/" className="header-logo" aria-label="ABA Medical — главная"><Image src="/images/brand/logo-cropped.png" alt="ABA Medical" width={720} height={164} priority /></Link>
+      <nav aria-label="Основная навигация" className="desktop-nav">
         <Link className={`nav-link${isActive("/") ? " nav-link-active" : ""}`} href="/">Главная</Link>
         <div className="nav-catalog-shell" onMouseEnter={() => setCatalogOpen(true)} onMouseLeave={() => setCatalogOpen(false)} onFocus={() => setCatalogOpen(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setCatalogOpen(false); }}>
           <Link className={`nav-link nav-catalog-link${pathname.startsWith("/catalog") ? " nav-link-active" : ""}`} href="/catalog" aria-expanded={catalogOpen}>Каталог <ChevronDown aria-hidden size={14} strokeWidth={2.2} /></Link>
@@ -54,10 +54,10 @@ export function Header() {
         {links.slice(1).map(([label, href]) => <Link key={href} className={`nav-link${isActive(href) ? " nav-link-active" : ""}`} href={href} aria-current={isActive(href) ? "page" : undefined}>{label}</Link>)}
       </nav>
       <GlobalSearch />
-      <a className="header-phone hidden items-center gap-2 2xl:flex" href={`tel:${siteConfig.phoneHref}`}><Phone size={16} />{siteConfig.phone}</a>
-      <Link className="header-cta hidden md:inline-flex" href="/contacts#consultation">Консультация <ArrowUpRight size={17} /></Link>
-      <button type="button" className="header-menu md:hidden" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Закрыть меню" : "Открыть меню"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+      <a className="header-phone" href={`tel:${siteConfig.phoneHref}`}><Phone size={16} />{siteConfig.phone}</a>
+      <Link className="header-cta" href="/contacts#consultation">Консультация <ArrowUpRight size={17} /></Link>
+      <button type="button" className="header-menu" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Закрыть меню" : "Открыть меню"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     </div>
-    {open && <nav id="mobile-menu" aria-label="Мобильная навигация" className="mobile-menu md:hidden"><div className="mobile-menu-content"><Link href="/" aria-current={isActive("/") ? "page" : undefined} onClick={() => setOpen(false)}>Главная<ArrowUpRight size={17} /></Link><details className="mobile-catalog"><summary>Каталог <ChevronDown size={18} /></summary><div className="mobile-directions"><Link href="/catalog" onClick={() => setOpen(false)}>Весь каталог<ArrowUpRight size={15} /></Link>{categories.map((category) => <Link key={category.slug} href={`/catalog/${category.slug}`} onClick={() => setOpen(false)}>{category.title}</Link>)}</div></details>{links.slice(1).map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined} onClick={() => setOpen(false)}>{label}<ArrowUpRight size={17} /></Link>)}<a className="mobile-menu-phone" href={`tel:${siteConfig.phoneHref}`}>{siteConfig.phone}</a></div></nav>}
+    {open && <nav id="mobile-menu" aria-label="Мобильная навигация" className="mobile-menu"><div className="mobile-menu-content"><Link href="/" aria-current={isActive("/") ? "page" : undefined} onClick={() => setOpen(false)}>Главная<ArrowUpRight size={17} /></Link><details className="mobile-catalog"><summary>Каталог <ChevronDown size={18} /></summary><div className="mobile-directions"><Link href="/catalog" onClick={() => setOpen(false)}>Весь каталог<ArrowUpRight size={15} /></Link>{categories.map((category) => <Link key={category.slug} href={`/catalog/${category.slug}`} onClick={() => setOpen(false)}>{category.title}</Link>)}</div></details>{links.slice(1).map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined} onClick={() => setOpen(false)}>{label}<ArrowUpRight size={17} /></Link>)}<div className="mobile-menu-actions"><Link className="mobile-menu-consultation" href="/contacts#consultation" onClick={() => setOpen(false)}>Получить консультацию<ArrowUpRight size={17} /></Link><a className="mobile-menu-phone" href={`tel:${siteConfig.phoneHref}`}><Phone size={17} />{siteConfig.phone}</a></div></div></nav>}
   </header>;
 }

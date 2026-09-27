@@ -1114,6 +1114,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .mobile-dock { display: none; }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+  .header-menu, .mobile-menu { display: none; }
   .header-shell { gap: .6rem; }
   .header-shell > a img { width: clamp(128px, 16vw, 150px); }
   .header-shell nav > .nav-link:first-child { display: none; }

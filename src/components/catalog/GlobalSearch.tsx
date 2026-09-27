@@ -31,6 +31,12 @@ export function GlobalSearch() {
     return () => window.clearTimeout(timer);
   }, [open]);
 
+  useEffect(() => {
+    const openSearch = () => setOpen(true);
+    window.addEventListener("aba:open-search", openSearch);
+    return () => window.removeEventListener("aba:open-search", openSearch);
+  }, []);
+
   const close = () => { setOpen(false); setQuery(""); };
   return <>
     <button className="header-search-button" type="button" onClick={() => setOpen(true)} aria-label="Поиск по каталогу"><Search size={18} /><span>Поиск</span><kbd>/</kbd></button>

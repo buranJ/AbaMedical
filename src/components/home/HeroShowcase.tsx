@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const slides = [
   {
@@ -58,6 +58,7 @@ const officialRepresentative =
 
 export function HeroShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
   const activeSlide = slides[activeIndex];
 
   const showPrevious = () => {
@@ -66,6 +67,13 @@ export function HeroShowcase() {
 
   const showNext = () => {
     setActiveIndex((current) => (current + 1) % slides.length);
+  };
+
+  const finishSwipe = (clientX: number) => {
+    if (touchStartX.current === null) return;
+    const distance = clientX - touchStartX.current;
+    if (Math.abs(distance) > 45) distance > 0 ? showPrevious() : showNext();
+    touchStartX.current = null;
   };
 
   return (
@@ -97,7 +105,7 @@ export function HeroShowcase() {
           </div>
         </div>
 
-        <div className="hero-concept-image">
+        <div className="hero-concept-image" onTouchStart={(event) => { touchStartX.current = event.touches[0]?.clientX ?? null; }} onTouchEnd={(event) => finishSwipe(event.changedTouches[0]?.clientX ?? 0)}>
           {slides.map((slide, index) => (
             <Image
               key={slide.id}

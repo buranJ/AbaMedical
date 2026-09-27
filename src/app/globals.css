@@ -1216,3 +1216,14 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
   .mobile-directions { grid-template-columns: 1fr; }
   .mobile-menu-actions { grid-template-columns: 1fr; }
 }
+
+/* Keep the catalog underline aligned to its label, excluding the chevron. */
+.desktop-nav .nav-catalog-link::after {
+  right: calc(.68rem + .35rem + 14px);
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .desktop-nav .nav-catalog-link::after {
+    right: calc(.44rem + .35rem + 14px);
+  }
+}

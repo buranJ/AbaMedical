@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Activity, ArrowRight, Brain, GraduationCap, HeartPulse, PackageCheck, ScanLine, ShieldCheck, Syringe, Wrench } from "lucide-react";
+import { ArrowRight, Brain, GraduationCap, HeartPulse, PackageCheck, Scissors, ShieldCheck, Syringe, Wind, Wrench } from "lucide-react";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ConsultationForm } from "@/components/forms/ConsultationForm";
 import { ProductCard } from "@/components/catalog/ProductCard";
@@ -16,7 +16,7 @@ const featuredSlugs = [
   "628587038-926775995101-energeticheskaya-platforma-valleylab-ft1",
   "628721518-902257232661-stealthstation-s8",
 ];
-const icons = { surgery: Activity, cardiology: HeartPulse, diabetes: Syringe, neurosurgery: Brain, anesthesiology: ScanLine };
+const icons = { surgery: Scissors, cardiology: HeartPulse, diabetes: Syringe, neurosurgery: Brain, anesthesiology: Wind };
 const directionImages = { surgery: "/images/directions/surgery.webp", cardiology: "/images/directions/cardiology.webp", diabetes: "/images/directions/diabetes.webp", neurosurgery: "/images/directions/neurosurgery.webp", anesthesiology: "/images/directions/anesthesiology.webp" };
 export default function HomePage() {
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) };

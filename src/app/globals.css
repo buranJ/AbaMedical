@@ -686,14 +686,15 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .clinical-task-head > p { max-width: 31rem; color: #687187; line-height: 1.7; }
 .clinical-task-grid { display: grid; margin-top: 2.25rem; border-top: 1px solid #dce2eb; border-left: 1px solid #dce2eb; }
 .clinical-task-grid a { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: start; min-height: 150px; border-right: 1px solid #dce2eb; border-bottom: 1px solid #dce2eb; background: white; padding: 1.25rem; transition: background .2s ease, color .2s ease; }
-.clinical-task-grid a > svg { color: var(--primary); }
+.clinical-task-grid a > svg { color: var(--primary); transition: color .2s ease; }
 .clinical-task-grid a > svg:last-child { align-self: end; }
 .clinical-task-grid a span { display: grid; gap: .55rem; }
-.clinical-task-grid strong { font-size: .86rem; line-height: 1.4; }
-.clinical-task-grid small { color: #697288; font-size: .7rem; line-height: 1.55; }
-.clinical-task-grid a:hover { background: var(--primary-deep); color: white; }
-.clinical-task-grid a:hover svg { color: var(--sky); }
-.clinical-task-grid a:hover small { color: rgba(255,255,255,.62); }
+.clinical-task-grid strong { color: var(--foreground); font-size: .86rem; line-height: 1.4; transition: color .2s ease; }
+.clinical-task-grid small { color: #697288; font-size: .72rem; line-height: 1.6; transition: color .2s ease; }
+.clinical-task-grid a:hover, .clinical-task-grid a:focus-visible { background: var(--primary-deep); color: white; }
+.clinical-task-grid a:hover strong, .clinical-task-grid a:focus-visible strong { color: white; }
+.clinical-task-grid a:hover svg, .clinical-task-grid a:focus-visible svg { color: #9bdcf5; }
+.clinical-task-grid a:hover small, .clinical-task-grid a:focus-visible small { color: rgba(255,255,255,.84); }
 .compare-panel-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; background: var(--primary-deep); padding: 1rem 1.25rem; color: white; }
 .compare-panel-head small { color: var(--sky); font-size: .6rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .compare-panel-head h3 { margin-top: .2rem; font-size: 1.05rem; font-weight: 820; }

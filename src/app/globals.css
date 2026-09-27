@@ -126,7 +126,6 @@ button, input, textarea, select { font: inherit; }
 .product-facts svg { align-self: start; margin-bottom: 2rem; color: var(--primary); }
 .product-facts p { color: #7b8499; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .product-facts strong { margin-top: .35rem; font-size: .95rem; }
-.product-disclaimer { border-left: 3px solid var(--coral); background: #fff4f0; padding: 1.15rem 1.25rem; color: #566077; font-size: .84rem; line-height: 1.7; }
 .product-copy { max-width: 54rem; }
 .product-copy p { color: #515a75; font-size: 1rem; line-height: 1.8; white-space: pre-line; }
 .product-copy p + p { margin-top: 1.15rem; }

@@ -32,6 +32,5 @@ export function ProductDetails({ product }: { product: Product }) {
     </div>
     {bullets.length > 0 && <div className="mt-10"><h3 className="text-2xl font-bold">Ключевые характеристики</h3><ul className="mt-6 grid gap-x-10 gap-y-4 md:grid-cols-2">{bullets.map((item, index) => <li className="flex gap-3 border-b border-[var(--border)] pb-4 leading-7 text-slate-700" key={`${index}-${item.slice(0, 32)}`}><Check className="mt-1 shrink-0 text-[var(--primary)]" size={18} />{item}</li>)}</ul></div>}
     <div className="product-copy mt-10"><h3 className="mb-5 text-2xl font-bold">Подробное описание</h3>{narrative.map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 24)}`}>{paragraph}</p>)}</div>
-    <aside className="product-disclaimer mt-10 max-w-4xl">Характеристики и комплектация могут различаться. Совместимость, регистрационные документы и условия поставки необходимо подтвердить у специалиста ABA Medical.</aside>
   </section>;
 }

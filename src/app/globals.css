@@ -710,10 +710,23 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .compare-table thead th > a:hover { color: var(--primary); }
 .compare-remove { position: absolute; z-index: 3; top: .65rem; right: .65rem; display: grid; width: 32px; height: 32px; place-items: center; border: 1px solid #d9dfe8; background: white; color: #7e879a; }
 .compare-remove:hover { color: var(--danger); }
+.compare-mobile-list { display: none; }
+.compare-mobile-card { position: relative; background: white; padding: 1rem; }
+.compare-mobile-card + .compare-mobile-card { border-top: 1px solid #dfe4ec; }
+.compare-mobile-remove { position: absolute; z-index: 2; top: .75rem; right: .75rem; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid #d9dfe8; border-radius: 50%; background: white; color: #747e92; }
+.compare-mobile-product { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 1rem; align-items: center; padding-right: 2.5rem; }
+.compare-mobile-image { position: relative; width: 92px; aspect-ratio: 1; overflow: hidden; border-radius: .75rem; background: #f4f6f9; }
+.compare-mobile-product > div:last-child { display: grid; gap: .75rem; }
+.compare-mobile-product a { font-size: 1rem; line-height: 1.35; font-weight: 820; }
+.compare-mobile-facts { display: grid; gap: 0; margin-top: 1rem; border-top: 1px solid #dfe4ec; }
+.compare-mobile-facts > div { display: grid; grid-template-columns: minmax(105px, .42fr) 1fr; gap: .8rem; border-bottom: 1px solid #e5e9f0; padding-block: .85rem; }
+.compare-mobile-facts > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.compare-mobile-facts dt { color: #737c90; font-size: .65rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+.compare-mobile-facts dd { min-width: 0; color: var(--foreground); font-size: .78rem; line-height: 1.55; }
 
 @media (min-width: 768px) { .clinical-task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1100px) { .clinical-task-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-@media (max-width: 767px) { .selection-bar { right: .65rem; bottom: .65rem; left: .65rem; } .selection-bar > span:last-child { display: none; } body:has(.product-page) .selection-bar { bottom: 5.45rem; } body:has(.selection-bar) .floating-contact { bottom: 5rem; } body:has(.product-page) .floating-contact { display: none; } .clinical-task-grid a { min-height: 125px; } }
+@media (max-width: 767px) { .selection-bar { right: .65rem; bottom: .65rem; left: .65rem; } .selection-bar > span:last-child { display: none; } body:has(.product-page) .selection-bar { bottom: 5.45rem; } body:has(.selection-bar) .floating-contact { bottom: 5rem; } body:has(.product-page) .floating-contact { display: none; } .clinical-task-grid a { min-height: 125px; } .compare-panel-head { align-items: flex-start; padding: 1rem; } .compare-panel-head h3 { font-size: 1rem; } .compare-panel-head > button { padding-top: .2rem; } .compare-table-scroll { display: none; } .compare-mobile-list { display: grid; } }
 
 /* Global catalogue command search and concise two-step lead form. */
 .header-search-button { display: flex; min-height: 40px; align-items: center; gap: .45rem; border-left: 1px solid #e1e5ec; padding-left: .85rem; color: #5f687b; font-size: .72rem; font-weight: 800; }

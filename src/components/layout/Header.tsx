@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Mail, Menu, Phone, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { categories } from "@/data/content";
 import { GlobalSearch } from "@/components/catalog/GlobalSearch";
@@ -14,9 +14,18 @@ const links = [["Главная", "/"], ["Услуги", "/services"], ["Нов�
 export function Header() {
   const [open, setOpen] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(false);
+  const [compact, setCompact] = useState(false);
   const pathname = usePathname();
   const isActive = (href: string) => !href.includes("#") && (href === "/" ? pathname === "/" : pathname.startsWith(href));
-  return <header className="site-header sticky top-0 z-50">
+
+  useEffect(() => {
+    const updateHeader = () => setCompact(window.scrollY > 36);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
+
+  return <header className={`site-header sticky top-0 z-50${compact ? " is-compact" : ""}`}>
     <div className="header-accent" aria-hidden />
     <div className="header-utility hidden md:block"><div className="container flex min-h-8 items-center justify-between gap-6"><p>Медицинские технологии для клиник Кыргызстана</p><div className="flex items-center gap-6"><a href={`mailto:${siteConfig.email}`}><Mail size={13} />{siteConfig.email}</a><span>{siteConfig.hours}</span></div></div></div>
     <div className="container header-shell flex min-h-[74px] items-center gap-5">

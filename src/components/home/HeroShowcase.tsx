@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 const slides = [
   {
     id: "result",
-    eyebrow: "ABA Medical · Кыргызстан",
+    eyebrow: null,
     title: "Технологии, которые работают",
     accent: "на результат",
     mobileTitle: ["Технологии, которые", "работают на результат"],
@@ -84,8 +84,8 @@ export function HeroShowcase() {
       <div className="container hero-concept hero-concept-editorial hero-slider">
         <div className="hero-concept-copy">
           <div key={activeSlide.id} className="hero-slider-copy" aria-live="polite">
-            <p className="eyebrow">{activeSlide.eyebrow}</p>
-            <h1 aria-label={`${activeSlide.title} ${activeSlide.accent}`}>
+            {activeSlide.eyebrow && <p className="eyebrow">{activeSlide.eyebrow}</p>}
+            <h1 className={activeSlide.eyebrow ? undefined : "hero-title-without-eyebrow"} aria-label={`${activeSlide.title} ${activeSlide.accent}`}>
               <span className="hero-title-desktop">{activeSlide.title} <b>{activeSlide.accent}</b></span>
               <span className="hero-title-mobile" aria-hidden="true"><b>{activeSlide.mobileTitle[0]}</b><b>{activeSlide.mobileTitle[1]}</b></span>
             </h1>

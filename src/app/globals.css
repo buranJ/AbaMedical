@@ -841,6 +841,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .hero-concept-editorial::before { content: ""; position: absolute; z-index: 3; inset: 0 auto 0 0; width: 4px; background: var(--brand-ribbon); }
 .hero-concept-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 5vw, 4.75rem); }
 .hero-concept-copy h1 { margin-top: 1.5rem; font-size: clamp(3rem, 4.7vw, 5rem); }
+.hero-concept-copy h1.hero-title-without-eyebrow { margin-top: 0; }
 .hero-concept-copy > p:not(.eyebrow) { margin-top: 1.5rem; }
 .hero-concept-image { position: relative; min-height: 680px; }
 .hero-editorial-caption { position: absolute; right: 0; bottom: 0; display: grid; width: min(88%, 430px); gap: .35rem; border-top: 3px solid var(--coral); background: rgba(255,255,255,.95); padding: 1.25rem 1.5rem; }

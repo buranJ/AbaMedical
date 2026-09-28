@@ -614,14 +614,15 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .about-direction-links a:hover { background: var(--primary-deep); color: white; }
 .about-direction-links a:hover svg { transform: translateX(4px); color: var(--sky); }
 
-.contact-map-real { position: relative; min-height: 520px; overflow: hidden; border: 1px solid #d8dfe9; border-radius: 1rem; background: #e8edf4; }
-.contact-map-real iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.7) contrast(.95); }
-.contact-map-caption { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; display: grid; gap: .7rem; border-top: 3px solid var(--coral); border-radius: .65rem; background: rgba(17,27,61,.95); padding: 1.15rem; color: white; backdrop-filter: blur(10px); }
-.contact-map-caption span { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.7); font-size: .72rem; }
-.contact-map-caption span:first-child { color: white; font-size: .85rem; }
-.contact-map-caption svg { flex: none; color: var(--sky); }
-.contact-map-caption a { display: inline-flex; align-items: center; gap: .45rem; margin-top: .2rem; color: white; font-size: .74rem; font-weight: 850; }
-.contact-map-caption > div { display: flex; align-items: center; gap: 1rem; }
+.contact-map-real { position: relative; display: grid; min-height: 520px; grid-template-rows: minmax(330px, 1fr) auto; overflow: hidden; border: 1px solid #d8dfe9; border-radius: 1rem; background: #e8edf4; }
+.contact-map-real iframe { display: block; width: 100%; height: 100%; border: 0; filter: saturate(.78) contrast(.97); }
+.contact-map-caption { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .45rem 1rem; border-top: 1px solid #dce2eb; background: rgba(255,255,255,.97); padding: 1rem 1.1rem; color: var(--foreground); }
+.contact-map-caption span { display: flex; min-width: 0; align-items: center; gap: .6rem; color: #727c91; font-size: .72rem; }
+.contact-map-caption span:first-child { color: var(--foreground); font-size: .84rem; }
+.contact-map-caption svg { flex: none; color: var(--primary); }
+.contact-map-caption a { display: inline-flex; min-height: 42px; align-items: center; gap: .45rem; border: 1px solid #d9e0eb; border-radius: .65rem; background: #f4f6fb; padding: .65rem .8rem; color: var(--primary-deep); font-size: .72rem; font-weight: 850; transition: border-color .2s ease, background .2s ease; }
+.contact-map-caption a:hover { border-color: var(--primary); background: white; }
+.contact-map-caption > div { grid-column: 2; grid-row: 1 / 3; display: flex; align-items: center; }
 .footer-main-grid { grid-template-columns: 1.25fr .65fr .9fr 1fr; }
 .footer-main-grid > div:not(:first-child) { border-left: 1px solid rgba(255,255,255,.09); padding-left: 1.5rem; }
 .footer-socials { display: flex; flex-wrap: wrap; gap: .6rem; }
@@ -633,7 +634,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 @media (min-width: 768px) { .about-direction-links { grid-template-columns: repeat(3, minmax(0, 1fr)); } .about-directions-head { grid-template-columns: 1fr .7fr; } }
 @media (min-width: 1024px) { .about-hero { grid-template-columns: .9fr 1.1fr; } .about-direction-links { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .footer-main-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 639px) { .about-hero-copy { min-height: 460px; } .about-hero-image { min-height: 350px; } .about-direction-links { grid-template-columns: 1fr; } .about-direction-links a { min-height: 74px; } .contact-map-real { min-height: 430px; } .footer-main-grid { grid-template-columns: 1fr; } .footer-main-grid > div:not(:first-child) { border-top: 1px solid rgba(255,255,255,.09); border-left: 0; padding-top: 1.5rem; padding-left: 0; } }
+@media (max-width: 639px) { .about-hero-copy { min-height: 460px; } .about-hero-image { min-height: 350px; } .about-direction-links { grid-template-columns: 1fr; } .about-direction-links a { min-height: 74px; } .contact-map-real { min-height: 430px; grid-template-rows: minmax(260px, 1fr) auto; } .contact-map-caption { grid-template-columns: 1fr; } .contact-map-caption > div { grid-column: 1; grid-row: auto; margin-top: .25rem; } .contact-map-caption a { width: 100%; justify-content: center; } .footer-main-grid { grid-template-columns: 1fr; } .footer-main-grid > div:not(:first-child) { border-top: 1px solid rgba(255,255,255,.09); border-left: 0; padding-top: 1.5rem; padding-left: 0; } }
 
 /* Remove residual ornamental effects from the earlier visual direction. */
 .brand-panel::after, .catalog-hero::after, .service-detail-card::after, .site-footer::after { display: none; }

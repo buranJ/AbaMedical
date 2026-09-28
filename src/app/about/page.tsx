@@ -28,7 +28,7 @@ export default function AboutPage() {
       <Breadcrumbs items={[{ label: "О компании" }]} />
       <div className="about-hero mt-12">
         <div className="about-hero-copy"><p className="eyebrow">ABA Medical</p><h1 className="display mobile-display-two-line mt-5"><span>Медицинские технологии</span>{" "}<span>для практических задач</span></h1><p className="lede mt-6">Компания поставляет оборудование и расходные материалы для ключевых направлений медицины Кыргызстана и помогает специалистам внедрять современные решения.</p><div className="mt-8"><ButtonLink href="/contacts#consultation">Обсудить задачу</ButtonLink></div></div>
-        <figure className="about-hero-image"><div className="relative h-full min-h-[430px] overflow-hidden"><Image src="/images/company/event.webp" alt="Профессиональное мероприятие ABA Medical" fill priority quality={90} sizes="(max-width: 1024px) 100vw, 55vw" className="clinical-event-photo object-cover" /><div><strong>Знания в практику</strong><span>Профессиональный обмен опытом медицинских специалистов</span></div></div></figure>
+        <figure className="about-hero-image"><div className="relative h-full min-h-[430px] overflow-hidden"><Image src="/images/company/company-team-showroom.webp" alt="Специалисты ABA Medical подбирают и проверяют медицинское оборудование" fill priority quality={95} sizes="(max-width: 1024px) 100vw, 90vw" className="about-company-team-photo object-cover" /><div><strong>Экспертиза в деталях</strong><span>Подбор и внедрение медицинских технологий</span></div></div></figure>
       </div>
     </div></section>
 

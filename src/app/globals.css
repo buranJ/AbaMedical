@@ -166,6 +166,7 @@ button, input, textarea, select { font: inherit; }
 .clinical-event-photo { object-position: center 38%; filter: saturate(1.02) contrast(1.025); }
 .clinic-implementation-photo { object-position: center; filter: saturate(1.015) contrast(1.02); }
 .services-support-photo { object-position: 45% center; filter: saturate(1.015) contrast(1.02); }
+.about-company-team-photo { object-position: center; filter: saturate(1.015) contrast(1.02); }
 .modern-card-grid .product-card { border: 1px solid rgba(223,229,241,.7); }
 .text-link { display: inline-flex; align-items: center; gap: .5rem; font-weight: 850; color: var(--primary); }
 .service-grid article { border: 1px solid rgba(255,255,255,.1); border-radius: 1.5rem; background: rgba(255,255,255,.06); padding: 1.7rem; backdrop-filter: blur(10px); }

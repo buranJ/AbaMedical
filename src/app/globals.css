@@ -621,8 +621,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .contact-map-caption span:first-child { color: white; font-size: .85rem; }
 .contact-map-caption svg { flex: none; color: var(--sky); }
 .contact-map-caption a { display: inline-flex; align-items: center; gap: .45rem; margin-top: .2rem; color: white; font-size: .74rem; font-weight: 850; }
-.contact-map-caption > div { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.contact-map-caption small { color: rgba(255,255,255,.42); font-size: .58rem; }
+.contact-map-caption > div { display: flex; align-items: center; gap: 1rem; }
 .footer-main-grid { grid-template-columns: 1.25fr .65fr .9fr 1fr; }
 .footer-main-grid > div:not(:first-child) { border-left: 1px solid rgba(255,255,255,.09); padding-left: 1.5rem; }
 .footer-socials { display: flex; flex-wrap: wrap; gap: .6rem; }

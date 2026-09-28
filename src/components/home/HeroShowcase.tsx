@@ -117,7 +117,7 @@ export function HeroShowcase() {
             fill
             preload={activeIndex === 0}
             quality={95}
-            sizes="(max-width: 900px) 100vw, (min-width: 1440px) 800px, 58vw"
+            sizes="100vw"
             className="object-cover hero-slider-image is-active"
           />
           <div className="hero-slider-controls" aria-label="Переключение слайдов">

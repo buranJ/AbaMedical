@@ -26,7 +26,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
       </div>
     </div></section>
 
-    <section className="section pt-10"><div className="container grid gap-6 lg:grid-cols-[.8fr_1.2fr]">
+    <section className="section pt-10"><div className="container grid gap-6 xl:grid-cols-[.8fr_1.2fr]">
       <div className="contact-map-real"><iframe title="ABA Medical на Яндекс Картах" src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA%2C%20%D1%83%D0%BB.%20%D0%98%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079&z=17&lang=ru_RU" loading="lazy" allowFullScreen /><div className="contact-map-caption"><span><MapPin size={20} /><strong>ул. Исанова 79, каб. 801</strong></span><span><Clock3 size={18} />{siteConfig.hours}</span><div><a href="https://yandex.ru/maps/?mode=routes&rtext=~%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA%2C%20%D1%83%D0%BB.%20%D0%98%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079&rtt=auto" target="_blank" rel="noopener noreferrer">Открыть маршрут <ArrowUpRight size={17} /></a></div></div></div>
       <div className="specialists-panel"><p className="eyebrow">Прямые контакты</p><h2 className="mt-4 text-3xl font-bold">Профильные специалисты</h2><div className="mt-7 grid gap-3 sm:grid-cols-2">{specialists.map((item) => { const Icon = item.icon; return <article className="specialist-card" key={item.email}><Icon size={20} /><h3>{item.role}</h3><a href={`tel:${item.phone.replaceAll(" ", "")}`}>{item.phone}</a><a href={`mailto:${item.email}`}>{item.email}</a></article>; })}</div></div>
     </div></section>

@@ -11,6 +11,7 @@ const slides = [
     eyebrow: "ABA Medical · Кыргызстан",
     title: "Технологии, которые работают",
     accent: "на результат",
+    mobileTitle: ["Технологии, которые", "работают на результат"],
     description:
       "Оборудование и расходные материалы для клиник — от профессионального подбора до внедрения и обучения команды.",
     primaryAction: { label: "Открыть каталог", href: "/catalog" },
@@ -26,6 +27,7 @@ const slides = [
     eyebrow: "Оборудование · обучение · сервис",
     title: "Сильная медицина начинается с",
     accent: "точного решения",
+    mobileTitle: ["Сильная медицина", "начинается с решения"],
     description:
       "Помогаем специалистам выбрать технологию, подготовить команду и уверенно внедрить решение в клиническую практику.",
     primaryAction: { label: "Получить консультацию", href: "#consultation" },
@@ -41,6 +43,7 @@ const slides = [
     eyebrow: "Медицинские технологии",
     title: "Оборудование для уверенной",
     accent: "клинической работы",
+    mobileTitle: ["Точное оборудование", "для клинической работы"],
     description:
       "Современные решения для хирургии, кардиологии, нейрохирургии, анестезиологии и контроля диабета.",
     primaryAction: { label: "Найти оборудование", href: "/catalog" },
@@ -82,8 +85,9 @@ export function HeroShowcase() {
         <div className="hero-concept-copy">
           <div key={activeSlide.id} className="hero-slider-copy" aria-live="polite">
             <p className="eyebrow">{activeSlide.eyebrow}</p>
-            <h1>
-              {activeSlide.title} <span>{activeSlide.accent}</span>
+            <h1 aria-label={`${activeSlide.title} ${activeSlide.accent}`}>
+              <span className="hero-title-desktop">{activeSlide.title} <b>{activeSlide.accent}</b></span>
+              <span className="hero-title-mobile" aria-hidden="true"><b>{activeSlide.mobileTitle[0]}</b><b>{activeSlide.mobileTitle[1]}</b></span>
             </h1>
             <p>{activeSlide.description}</p>
             <strong className="hero-official-line">{officialRepresentative}</strong>

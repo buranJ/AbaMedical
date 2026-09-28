@@ -1246,3 +1246,27 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
     right: calc(.44rem + .35rem + 14px);
   }
 }
+
+/* Mobile type and overflow safeguards. */
+html, body { max-width: 100%; overflow-x: clip; }
+main, .site-footer { overflow-wrap: anywhere; }
+.mobile-display-two-line > span:first-child { color: inherit; }
+.hero-title-mobile { display: none; }
+.hero-title-desktop { color: inherit !important; }
+.hero-title-desktop > b { color: var(--primary); font-weight: inherit; }
+
+@media (max-width: 767px) {
+  .mobile-two-line { max-width: none !important; font-size: clamp(1.15rem, 5.9vw, 2rem) !important; line-height: 1.04 !important; letter-spacing: -.045em; text-wrap: initial; }
+  .mobile-display-two-line { max-width: none !important; font-size: clamp(1.6rem, 7.2vw, 2.35rem) !important; line-height: 1 !important; letter-spacing: -.05em; text-wrap: initial; }
+  .mobile-two-line > span,
+  .mobile-display-two-line > span { display: block; white-space: nowrap; }
+  .section-heading-row { align-items: flex-start; flex-direction: column; }
+  .section-heading-row .text-link { align-self: flex-start; }
+  .hero-title-desktop { display: none; }
+  .hero-title-mobile { display: block; color: inherit !important; }
+  .hero-title-mobile > b { display: block; color: inherit; font-weight: inherit; white-space: nowrap; }
+  .hero-title-mobile > b:last-child { color: var(--primary); }
+  .hero-slider .hero-concept-copy h1 { font-size: clamp(1.8rem, 7.8vw, 2.55rem); line-height: .98; }
+  .article-header .display { max-width: none; font-size: clamp(1.75rem, 7.5vw, 2.2rem); line-height: 1; }
+  .news-feature h2 { font-size: clamp(1.55rem, 7vw, 1.8rem); text-wrap: balance; }
+}

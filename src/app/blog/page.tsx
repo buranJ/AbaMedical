@@ -11,7 +11,7 @@ export default function BlogPage() {
   return <div className="section"><div className="container">
     <Breadcrumbs items={[{ label: "Новости" }]} />
     <header className="news-index-hero mt-10">
-      <div><p className="eyebrow">Пресс-центр</p><h1 className="heading mt-4">Практика, события и медицинские технологии</h1><p className="lede mt-5 max-w-3xl">Профессиональные мероприятия ABA Medical и новости медицинского сообщества Кыргызстана.</p></div>
+      <div><p className="eyebrow">Пресс-центр</p><h1 className="heading mobile-two-line mt-4"><span>Практика, события и</span>{" "}<span>медицинские технологии</span></h1><p className="lede mt-5 max-w-3xl">Профессиональные мероприятия ABA Medical и новости медицинского сообщества Кыргызстана.</p></div>
       <div className="news-index-topics"><span><HeartPulse />Медицинские технологии</span><span><GraduationCap />Профессиональное обучение</span><span><BookOpen />Практика компании</span></div>
     </header>
     <section className="news-index-grid mt-12">

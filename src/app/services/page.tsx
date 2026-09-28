@@ -19,7 +19,7 @@ export default function ServicesPage() {
       <div className="services-hero mt-10">
         <div className="relative z-10 p-7 md:p-12 lg:p-16">
           <p className="eyebrow text-white/65">Экспертная поддержка</p>
-          <h1 className="display mt-6 text-white">Не просто поставка — <span>помощь на каждом этапе</span></h1>
+          <h1 className="display mobile-display-two-line mt-6 text-white"><span>Не просто поставка</span>{" "}<span>Помощь на каждом этапе</span></h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/65">От выбора оборудования до обучения команды и сопровождения внедрения в клиническую практику.</p>
           <a className="catalog-hero-link mt-8" href="#consultation">Обсудить задачу <ArrowRight size={18} /></a>
         </div>
@@ -31,14 +31,14 @@ export default function ServicesPage() {
     </div></section>
 
     <section className="section pt-14"><div className="container">
-      <div className="grid items-end gap-6 lg:grid-cols-[1fr_.7fr]"><div><p className="eyebrow">Что мы делаем</p><h2 className="heading mt-4 max-w-3xl">Поддержка, встроенная в вашу работу</h2></div><p className="max-w-xl leading-7 text-slate-600">Каждый запрос начинается с задачи специалиста или клиники. Формат работы подбирается под неё — без универсальных пакетов и лишних этапов.</p></div>
+      <div className="grid items-end gap-6 lg:grid-cols-[1fr_.7fr]"><div><p className="eyebrow">Что мы делаем</p><h2 className="heading mobile-two-line mt-4 max-w-3xl"><span>Поддержка, встроенная</span>{" "}<span>в вашу работу</span></h2></div><p className="max-w-xl leading-7 text-slate-600">Каждый запрос начинается с задачи специалиста или клиники. Формат работы подбирается под неё — без универсальных пакетов и лишних этапов.</p></div>
       <div className="service-detail-grid mt-10">
         {services.map(({ icon: Icon, label, title, text, tone }) => <article className={`service-detail-card service-tone-${tone}`} key={title}><div className="service-detail-top"><span className="service-detail-icon"><Icon size={25} strokeWidth={1.8} /></span><span className="service-detail-label">{label}</span></div><h3>{title}</h3><p>{text}</p></article>)}
       </div>
     </div></section>
 
     <section className="section pt-6"><div className="container"><div className="support-band">
-      <div><p className="eyebrow text-white/65">Результат</p><h2 className="heading mt-4 text-white">Понятное решение без лишней сложности</h2></div>
+      <div><p className="eyebrow text-white/65">Результат</p><h2 className="heading mobile-two-line mt-4 text-white"><span>Понятное решение</span>{" "}<span>без лишней сложности</span></h2></div>
       <div className="support-points"><p>Проверка совместимости и комплектации</p><p>Коммуникация с профильным специалистом</p><p>Сопровождение после выбора оборудования</p></div>
     </div></div></section>
 

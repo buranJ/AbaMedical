@@ -67,7 +67,7 @@ function SelectionTray() {
   const query = encodeURIComponent(items.map((item) => item.title).join("; "));
   return <div className={`selection-tray${open ? " is-open" : ""}`}>
     {open && <button className="selection-backdrop" type="button" aria-label="Закрыть список" onClick={() => setOpen(false)} />}
-    <button className="selection-bar" type="button" onClick={() => setOpen(true)} aria-expanded={open}><span><ClipboardList size={19} /><strong>Заявка на оборудование</strong><b>{items.length}</b></span><span>Открыть <ChevronRight size={17} /></span></button>
+    <button className="selection-bar" type="button" onClick={() => setOpen(true)} aria-expanded={open} aria-label={`Открыть заявку на оборудование: ${items.length}`} title="Заявка на оборудование"><ClipboardList size={21} /><b>{items.length}</b></button>
     {open && <aside className="selection-drawer" aria-label="Выбранное оборудование"><header><div><small>Мультизаявка</small><h2>Выбранное оборудование</h2></div><button type="button" onClick={() => setOpen(false)} aria-label="Закрыть"><X /></button></header><div className="selection-list">{items.map((item) => <article key={item.slug}><div><small>{item.categoryLabel}{item.brand ? ` · ${item.brand}` : ""}</small><strong>{item.title}</strong></div><button type="button" onClick={() => remove(item.slug)} aria-label={`Убрать ${item.title}`}><Trash2 size={17} /></button></article>)}</div><footer><p>Специалист уточнит совместимость, комплектацию и условия поставки.</p><Link href={`/contacts?product=${query}#consultation`} onClick={() => setOpen(false)}>Отправить заявку <ChevronRight size={18} /></Link><button type="button" onClick={clear}>Очистить список</button></footer></aside>}
   </div>;
 }

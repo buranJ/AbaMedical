@@ -8,6 +8,7 @@ const redirectMap: Record<string, string> = {
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  devIndicators: false,
   turbopack: { root: process.cwd() },
   allowedDevOrigins: ["127.0.0.1"],
   images: { formats: ["image/avif", "image/webp"], qualities: [75, 90, 95] },

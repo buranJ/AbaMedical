@@ -164,6 +164,7 @@ button, input, textarea, select { font: inherit; }
 .category-tile .relative > svg { color: white; }
 .content-photo { filter: saturate(1.03) contrast(1.035); }
 .clinical-event-photo { object-position: center 38%; filter: saturate(1.02) contrast(1.025); }
+.clinic-implementation-photo { object-position: center; filter: saturate(1.015) contrast(1.02); }
 .services-support-photo { object-position: 45% center; filter: saturate(1.015) contrast(1.02); }
 .modern-card-grid .product-card { border: 1px solid rgba(223,229,241,.7); }
 .text-link { display: inline-flex; align-items: center; gap: .5rem; font-weight: 850; color: var(--primary); }

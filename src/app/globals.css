@@ -591,7 +591,8 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 @media (max-width: 639px) {
   .news-list a { grid-template-columns: 1fr; min-height: 0; }
   .news-list a > div { min-height: 0; aspect-ratio: 4 / 3; }
-  .news-list a > span { min-height: 180px; }
+  .news-list a > span { min-height: 0; padding: 1rem; }
+  .news-list em { margin-top: 1.1rem; }
 }
 
 /* Company, location and footer refinement. */

@@ -12,7 +12,11 @@ export default function BlogPage() {
     <Breadcrumbs items={[{ label: "Новости" }]} />
     <header className="news-index-hero mt-10">
       <div><p className="eyebrow">Пресс-центр</p><h1 className="heading mobile-two-line mt-4"><span>Практика, события и</span>{" "}<span>медицинские технологии</span></h1><p className="lede mt-5 max-w-3xl">Профессиональные мероприятия ABA Medical и новости медицинского сообщества Кыргызстана.</p></div>
-      <div className="news-index-topics"><span><HeartPulse />Медицинские технологии</span><span><GraduationCap />Профессиональное обучение</span><span><BookOpen />Практика компании</span></div>
+      <div className="news-index-topics">
+        <div><HeartPulse /><span><strong>Медицинские технологии</strong><small>Оборудование и клинические решения</small></span></div>
+        <div><GraduationCap /><span><strong>Профессиональное обучение</strong><small>Мастер-классы и обмен опытом</small></span></div>
+        <div><BookOpen /><span><strong>Практика компании</strong><small>Проекты, события и новости</small></span></div>
+      </div>
     </header>
     <section className="news-index-grid mt-12">
       <article className="news-feature"><Link href={`/blog/${articles[0].slug}`}><div className="relative min-h-[470px] overflow-hidden"><Image src={articles[0].image} alt={articles[0].title} fill priority quality={90} sizes="(max-width: 1024px) 100vw, 65vw" className="content-photo object-cover" /><div className="news-feature-shade" /><span>Медицинские технологии</span><div><h2>{articles[0].title}</h2><p>{articles[0].excerpt}</p><em>Читать материал <ArrowRight size={18} /></em></div></div></Link></article>

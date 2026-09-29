@@ -186,7 +186,7 @@ button, input, textarea, select { font: inherit; }
 .form-surface input:focus, .form-surface textarea:focus, .form-surface select:focus { outline: none; background: white; box-shadow: 0 0 0 3px rgba(83,110,197,.15); }
 .services-hero { display: grid; overflow: hidden; border-radius: 2.5rem; background: radial-gradient(circle at 20% 0, rgba(140,204,232,.18), transparent 35%), linear-gradient(145deg, #0f1838, #243873); box-shadow: 0 35px 90px rgba(17,27,61,.2); }
 .services-hero .display { max-width: 11ch; }
-.services-hero .display span { background: linear-gradient(90deg, #9ddcf3, #aebaf0 55%, #f1aa99); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.services-hero .display span { background: linear-gradient(90deg, #9ddcf3, #aebaf0 55%, #f1aa99); -webkit-background-clip: text; background-clip: text; padding-right: .08em; color: transparent; }
 .services-hero-image { position: relative; min-height: 420px; overflow: hidden; margin: .65rem; border-radius: 2rem; }
 .services-hero-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 48%, rgba(10,18,43,.82)); }
 .services-hero-image figcaption { position: absolute; z-index: 2; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; display: grid; gap: .2rem; border: 1px solid rgba(255,255,255,.18); border-radius: 1.2rem; background: rgba(16,25,57,.72); padding: 1rem 1.2rem; color: white; backdrop-filter: blur(14px); }

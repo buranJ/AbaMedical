@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Check, ChevronRight, ClipboardList, Trash2, X } from "lucide-react";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import type { Product } from "@/types/content";
 
 type SelectionItem = Pick<Product, "slug" | "title" | "brand" | "categoryLabel" | "image">;
@@ -63,11 +63,44 @@ export function SelectionToggle({ product, compact = false }: { product: Product
 function SelectionTray() {
   const { items, remove, clear } = useSelection();
   const [open, setOpen] = useState(false);
+  const drawer = useRef<HTMLElement>(null);
+  const closeButton = useRef<HTMLButtonElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!items.length) setOpen(false);
+  }, [items.length]);
+
+  useEffect(() => {
+    if (!open || !items.length) return;
+    closeButton.current?.focus();
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusable = drawer.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+
+    document.addEventListener("keydown", handleKeydown);
+    return () => {
+      document.removeEventListener("keydown", handleKeydown);
+      trigger.current?.focus();
+    };
+  }, [open, items.length]);
+
   if (!items.length) return null;
   const query = encodeURIComponent(items.map((item) => item.title).join("; "));
   return <div className={`selection-tray${open ? " is-open" : ""}`}>
     {open && <button className="selection-backdrop" type="button" aria-label="Закрыть список" onClick={() => setOpen(false)} />}
-    <button className="selection-bar" type="button" onClick={() => setOpen(true)} aria-expanded={open} aria-label={`Открыть заявку на оборудование: ${items.length}`} title="Заявка на оборудование"><ClipboardList size={21} /><b>{items.length}</b></button>
-    {open && <aside className="selection-drawer" aria-label="Выбранное оборудование"><header><div><small>Мультизаявка</small><h2>Выбранное оборудование</h2></div><button type="button" onClick={() => setOpen(false)} aria-label="Закрыть"><X /></button></header><div className="selection-list">{items.map((item) => <article key={item.slug}><div><small>{item.categoryLabel}{item.brand ? ` · ${item.brand}` : ""}</small><strong>{item.title}</strong></div><button type="button" onClick={() => remove(item.slug)} aria-label={`Убрать ${item.title}`}><Trash2 size={17} /></button></article>)}</div><footer><p>Специалист уточнит совместимость, комплектацию и условия поставки.</p><Link href={`/contacts?product=${query}#consultation`} onClick={() => setOpen(false)}>Отправить заявку <ChevronRight size={18} /></Link><button type="button" onClick={clear}>Очистить список</button></footer></aside>}
+    <button ref={trigger} className="selection-bar" type="button" onClick={() => setOpen(true)} aria-expanded={open} aria-controls="selection-drawer" aria-label={`Открыть заявку на оборудование: ${items.length}`} title="Заявка на оборудование"><ClipboardList size={21} /><b>{items.length}</b></button>
+    {open && <aside ref={drawer} id="selection-drawer" className="selection-drawer" role="dialog" aria-modal="true" aria-labelledby="selection-drawer-title"><header><div><small>Мультизаявка</small><h2 id="selection-drawer-title">Выбранное оборудование</h2><p>{items.length} {items.length === 1 ? "позиция" : items.length < 5 ? "позиции" : "позиций"}</p></div><button ref={closeButton} type="button" onClick={() => setOpen(false)} aria-label="Закрыть"><X /></button></header><div className="selection-list">{items.map((item) => <article key={item.slug}><div><small>{item.categoryLabel}{item.brand ? ` · ${item.brand}` : ""}</small><strong>{item.title}</strong></div><button type="button" onClick={() => remove(item.slug)} aria-label={`Убрать ${item.title}`}><Trash2 size={18} /></button></article>)}</div><footer><p>Специалист уточнит совместимость, комплектацию и условия поставки.</p><Link href={`/contacts?product=${query}#consultation`} onClick={() => setOpen(false)}>Отправить заявку <ChevronRight size={18} /></Link><button type="button" onClick={clear}>Очистить список</button></footer></aside>}
   </div>;
 }

@@ -26,6 +26,7 @@
 html { scroll-behavior: smooth; }
 #directions, #assortment, #consultation { scroll-margin-top: 7rem; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-size: 16px; }
+body:has(.selection-drawer), body:has(.consultation-modal) { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
 :focus-visible { outline: 3px solid color-mix(in srgb, var(--primary) 55%, white); outline-offset: 3px; }
@@ -693,27 +694,28 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .selection-toggle:disabled { cursor: not-allowed; opacity: .5; }
 .selection-toggle-compact { width: 100%; min-height: 40px; margin-top: 1rem; justify-content: flex-start; border: 0; border-top: 1px solid #e0e5ed; background: transparent; padding: .75rem 0 0; }
 .selection-toggle-compact.is-selected { border-color: #e0e5ed; background: transparent; }
-.selection-tray { position: relative; z-index: 90; }
+.selection-tray { position: relative; }
 .selection-bar { position: fixed; z-index: 91; right: 1rem; bottom: 5.25rem; display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; background: var(--primary-deep); color: white; box-shadow: 0 12px 28px rgba(17,27,61,.22); transition: transform .2s ease, box-shadow .2s ease; }
 .selection-bar:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(17,27,61,.28); }
 .selection-bar b { position: absolute; top: -5px; right: -5px; display: grid; min-width: 22px; height: 22px; place-items: center; border: 2px solid white; border-radius: 999px; background: var(--primary); padding-inline: .25rem; font-size: .65rem; }
-.selection-backdrop { position: fixed; z-index: 92; inset: 0; background: rgba(8,15,37,.48); backdrop-filter: blur(3px); }
-.selection-drawer { position: fixed; z-index: 93; top: 0; right: 0; bottom: 0; display: flex; width: min(92vw, 480px); flex-direction: column; background: #f6f7f9; box-shadow: -24px 0 70px rgba(17,27,61,.2); animation: drawer-in .22s ease-out both; }
+.selection-backdrop { position: fixed; z-index: 170; inset: 0; border: 0; background: rgba(8,15,37,.56); backdrop-filter: blur(3px); }
+.selection-drawer { position: fixed; z-index: 171; top: 0; right: 0; bottom: 0; display: flex; width: min(94vw, 480px); flex-direction: column; background: #f6f7f9; box-shadow: -24px 0 70px rgba(17,27,61,.25); animation: drawer-in .22s ease-out both; }
 .selection-drawer header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #dce2eb; background: white; padding: 1.4rem; }
 .selection-drawer header small { color: var(--primary); font-size: .65rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
 .selection-drawer header h2 { margin-top: .35rem; font-size: 1.45rem; font-weight: 820; letter-spacing: -.025em; }
-.selection-drawer header > button { display: grid; width: 40px; height: 40px; flex: none; place-items: center; border: 1px solid #d9dfe9; }
-.selection-list { display: grid; gap: .55rem; overflow-y: auto; padding: 1rem; }
+.selection-drawer header p { margin-top: .35rem; color: #7a8397; font-size: .72rem; }
+.selection-drawer header > button { display: grid; width: 44px; height: 44px; flex: none; place-items: center; border: 1px solid #d9dfe9; background: white; }
+.selection-list { display: grid; gap: .55rem; overflow-y: auto; overscroll-behavior: contain; padding: 1rem; }
 .selection-list article { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; border: 1px solid #dde3ec; background: white; padding: 1rem; }
 .selection-list article > div { display: grid; gap: .35rem; }
 .selection-list small { color: var(--primary); font-size: .61rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
 .selection-list strong { font-size: .82rem; line-height: 1.4; }
-.selection-list article > button { display: grid; width: 36px; height: 36px; place-items: center; color: #8992a4; }
+.selection-list article > button { display: grid; width: 44px; height: 44px; place-items: center; color: #8992a4; }
 .selection-list article > button:hover { color: var(--danger); }
-.selection-drawer footer { display: grid; gap: .75rem; margin-top: auto; border-top: 1px solid #dce2eb; background: white; padding: 1.25rem; }
+.selection-drawer footer { display: grid; gap: .75rem; margin-top: auto; border-top: 1px solid #dce2eb; background: white; padding: 1.25rem 1.25rem max(1.25rem, env(safe-area-inset-bottom)); }
 .selection-drawer footer p { color: #687187; font-size: .72rem; line-height: 1.55; }
 .selection-drawer footer a { display: flex; min-height: 50px; align-items: center; justify-content: center; gap: .5rem; background: var(--primary); color: white; font-size: .78rem; font-weight: 850; }
-.selection-drawer footer > button { color: #7c8598; font-size: .7rem; font-weight: 750; }
+.selection-drawer footer > button { min-height: 40px; color: #7c8598; font-size: .7rem; font-weight: 750; }
 @keyframes drawer-in { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
 .clinical-task-section { margin-block: 2rem 4.5rem; border-block: 1px solid #dce2eb; padding-block: clamp(3.5rem, 6vw, 5.5rem); }
@@ -763,6 +765,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 @media (min-width: 768px) { .clinical-task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1100px) { .clinical-task-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 @media (max-width: 767px) { .selection-bar { right: .75rem; bottom: .75rem; width: 48px; height: 48px; } body:has(.product-page) .floating-contact { display: none; } .clinical-task-grid a { min-height: 125px; } .compare-panel-head { align-items: flex-start; padding: 1rem; } .compare-panel-head h3 { font-size: 1rem; } .compare-panel-head > button { padding-top: .2rem; } .compare-table-scroll { display: none; } .compare-mobile-list { display: grid; } }
+@media (max-width: 767px) { .selection-drawer { width: 100%; } .selection-drawer header { padding-top: max(1.4rem, env(safe-area-inset-top)); } }
 
 /* Global catalogue command search and concise two-step lead form. */
 .header-search-button { display: flex; min-height: 40px; align-items: center; gap: .45rem; border-left: 1px solid #e1e5ec; padding-left: .85rem; color: #5f687b; font-size: .72rem; font-weight: 800; }

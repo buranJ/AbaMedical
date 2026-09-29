@@ -39,13 +39,10 @@ export function ConsultationModal() {
 
   useEffect(() => {
     if (!request) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     closeButton.current?.focus();
     function closeOnEscape(event: KeyboardEvent) { if (event.key === "Escape") setRequest(null); }
     document.addEventListener("keydown", closeOnEscape);
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", closeOnEscape);
       previousFocus.current?.focus();
     };

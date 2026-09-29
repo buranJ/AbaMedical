@@ -640,7 +640,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 @media (min-width: 768px) { .about-direction-links { grid-template-columns: repeat(3, minmax(0, 1fr)); } .about-directions-head { grid-template-columns: 1fr .7fr; } }
 @media (min-width: 1024px) { .about-hero { grid-template-columns: .9fr 1.1fr; } .about-direction-links { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .footer-main-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 639px) { .about-hero-copy { min-height: 460px; } .about-hero-image { min-height: 350px; } .about-direction-links { grid-template-columns: 1fr; } .about-direction-links a { min-height: 74px; } .contact-map-real { min-height: 430px; grid-template-rows: minmax(260px, 1fr) auto; } .contact-map-caption { grid-template-columns: 1fr; } .contact-map-caption > div { grid-column: 1; grid-row: auto; margin-top: .25rem; } .contact-map-caption a { width: 100%; justify-content: center; } .footer-main-grid { grid-template-columns: 1fr; } .footer-main-grid > div:not(:first-child) { border-top: 1px solid rgba(255,255,255,.09); border-left: 0; padding-top: 1.5rem; padding-left: 0; } }
+@media (max-width: 639px) { .about-hero-copy { min-height: 0; justify-content: flex-start; padding: 2rem 1rem 1.5rem; } .about-hero-image, .about-hero-image > div { min-height: 350px; } .about-direction-links { grid-template-columns: 1fr; } .about-direction-links a { min-height: 74px; } .contact-map-real { min-height: 430px; grid-template-rows: minmax(260px, 1fr) auto; } .contact-map-caption { grid-template-columns: 1fr; } .contact-map-caption > div { grid-column: 1; grid-row: auto; margin-top: .25rem; } .contact-map-caption a { width: 100%; justify-content: center; } .footer-main-grid { grid-template-columns: 1fr; } .footer-main-grid > div:not(:first-child) { border-top: 1px solid rgba(255,255,255,.09); border-left: 0; padding-top: 1.5rem; padding-left: 0; } }
 
 /* Remove residual ornamental effects from the earlier visual direction. */
 .brand-panel::after, .catalog-hero::after, .service-detail-card::after, .site-footer::after { display: none; }
@@ -1280,4 +1280,8 @@ main, .site-footer { overflow-wrap: anywhere; }
   .hero-slider .hero-concept-copy h1 { font-size: clamp(1.8rem, 7.8vw, 2.55rem); line-height: .98; }
   .article-header .display { max-width: none; font-size: clamp(1.75rem, 7.5vw, 2.2rem); line-height: 1; }
   .news-feature h2 { font-size: clamp(1.55rem, 7vw, 1.8rem); text-wrap: balance; }
+}
+
+@media (max-width: 360px) {
+  .about-hero-copy .mobile-display-two-line { font-size: 1.35rem !important; letter-spacing: -.055em; }
 }

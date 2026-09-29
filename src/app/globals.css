@@ -1153,6 +1153,8 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 }
 
 @media (max-width: 1023px) {
+  .about-hero-copy .mobile-display-two-line { max-width: none; overflow-wrap: normal; word-break: normal; }
+  .about-hero-copy .mobile-display-two-line > span { display: block; }
   .header-shell { min-height: 74px; gap: .9rem; }
   .header-logo { flex: 0 1 174px; min-width: 0; margin-right: auto; }
   .header-logo img { width: min(174px, 100%); }

@@ -22,7 +22,7 @@ function splitDetails(details: string[]) {
 
 export function ProductDetails({ product }: { product: Product }) {
   const { narrative, bullets } = splitDetails(product.details || []);
-  return <section className="mt-16 border-t border-[var(--border)] pt-12">
+  return <section className="mt-8">
     <p className="eyebrow">О продукте</p>
     <h2 className="heading mt-4">Описание и характеристики</h2>
     <div className="product-facts mt-8">

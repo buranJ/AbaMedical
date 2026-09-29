@@ -575,9 +575,9 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .article-related > div:first-child h2 { margin-top: .6rem; font-size: 2rem; font-weight: 820; }
 .article-related > div:first-child > a { display: inline-flex; align-items: center; gap: .4rem; color: var(--primary); font-size: .76rem; font-weight: 850; }
 .article-related > div:last-child { display: grid; gap: 1rem; margin-top: 1.5rem; }
-.article-related article { overflow: hidden; align-self: start; border: 0; background: white; box-shadow: 0 8px 26px rgba(17,27,61,.07); }
+.article-related article { overflow: hidden; border: 0; background: white; box-shadow: 0 8px 26px rgba(17,27,61,.07); }
 .article-related article > a { display: grid; grid-template-rows: auto auto; }
-.article-related article a > div { width: 100%; background: white; }
+.article-related article a > div { width: 100%; aspect-ratio: 4 / 3; background: white; }
 .article-related article a > span { display: flex; flex-direction: column; align-items: flex-start; padding: 1.25rem; }
 .article-related small { color: var(--primary); font-size: .62rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
 .article-related strong { margin-top: .7rem; line-height: 1.35; }

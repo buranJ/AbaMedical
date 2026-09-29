@@ -37,6 +37,7 @@ export interface NewsArticle {
   body: string[];
   date: string | null;
   image: string;
+  imageAspect: string;
 }
 
 export interface FAQItem { question: string; answer: string }

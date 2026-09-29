@@ -28,10 +28,15 @@ export default function CatalogPage() {
       <div className="container">
         <Breadcrumbs items={[{ label: "Каталог" }]} />
         <header className="catalog-hero mt-10">
-          <p className="eyebrow text-white/65">ABA Medical</p>
-          <h1 className="catalog-hero-title heading mt-4 max-w-4xl text-white"><span>Каталог медицинского</span>{" "}<span>оборудования</span></h1>
-          <p className="lede mt-5 max-w-3xl text-white/70">Решения для операционных, кардиологии, нейрохирургии, анестезиологии и контроля диабета — от проверенных мировых производителей.</p>
-          <a className="catalog-hero-link mt-8" href="#assortment">Найти оборудование <ArrowRight size={18} /></a>
+          <div className="catalog-hero-copy">
+            <p className="eyebrow text-white/65">ABA Medical</p>
+            <h1 className="catalog-hero-title heading mt-4 text-white"><span>Каталог медицинского</span>{" "}<span>оборудования</span></h1>
+            <p className="lede mt-5 max-w-3xl text-white/70">Решения для операционных, кардиологии, нейрохирургии, анестезиологии и контроля диабета — от проверенных мировых производителей.</p>
+            <a className="catalog-hero-link mt-8" href="#assortment">Найти оборудование <ArrowRight size={18} /></a>
+          </div>
+          <nav className="catalog-hero-directions" aria-label="Медицинские направления">
+            {categories.map((category) => <Link href={`/catalog/${category.slug}`} key={category.slug}><span>{category.title}</span><ArrowRight size={17} /></Link>)}
+          </nav>
         </header>
 
         <section id="directions" className="py-12">

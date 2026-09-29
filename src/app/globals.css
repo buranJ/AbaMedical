@@ -608,7 +608,8 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .about-mission::after { content: ""; position: absolute; top: 0; right: 0; width: 34%; height: 3px; background: var(--coral); }
 .about-mission .eyebrow { color: #b8def0; }
 .about-mission .heading { max-width: 18ch; }
-.about-partners .heading { max-width: 15ch; overflow-wrap: normal; font-size: clamp(2.5rem, 4vw, 4rem); }
+.about-partners-heading { display: grid; justify-items: center; text-align: center; }
+.about-partners .heading { max-width: none; overflow-wrap: normal; font-size: clamp(2.5rem, 4vw, 4rem); }
 .about-directions { border-block: 1px solid #dbe1eb; background: #eef2f7; padding-block: clamp(4rem, 7vw, 6rem); }
 .about-directions-head { display: grid; gap: 1.5rem; align-items: end; }
 .about-directions-head > p { max-width: 34rem; color: #687187; line-height: 1.7; }

@@ -33,7 +33,7 @@ export default function ServicesPage() {
     <section className="section pt-14"><div className="container">
       <div className="grid items-end gap-6 lg:grid-cols-[1fr_.7fr]"><div><p className="eyebrow">Что мы делаем</p><h2 className="heading mobile-two-line mt-4 max-w-3xl"><span>Поддержка, встроенная</span>{" "}<span>в вашу работу</span></h2></div><p className="max-w-xl leading-7 text-slate-600">Каждый запрос начинается с задачи специалиста или клиники. Формат работы подбирается под неё — без универсальных пакетов и лишних этапов.</p></div>
       <div className="service-detail-grid mt-10">
-        {services.map(({ icon: Icon, label, title, text, tone }) => <article className={`service-detail-card service-tone-${tone}`} key={title}><div className="service-detail-top"><span className="service-detail-icon"><Icon size={25} strokeWidth={1.8} /></span><span className="service-detail-label">{label}</span></div><h3>{title}</h3><p>{text}</p></article>)}
+        {services.map(({ icon: Icon, label, title, text, tone }) => <article className={`service-detail-card service-tone-${tone}`} key={title}><div className="service-detail-top"><span className="service-detail-icon"><Icon size={32} strokeWidth={1.6} /></span><span className="service-detail-label">{label}</span></div><h3>{title}</h3><p>{text}</p></article>)}
       </div>
     </div></section>
 

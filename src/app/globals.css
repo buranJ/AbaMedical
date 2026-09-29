@@ -199,7 +199,7 @@ button, input, textarea, select { font: inherit; }
 .service-tone-lilac { --service-glow: radial-gradient(circle, rgba(119,139,210,.4), transparent 67%); }
 .service-tone-coral { --service-glow: radial-gradient(circle, rgba(226,146,126,.36), transparent 67%); }
 .service-detail-top { display: flex; align-items: center; justify-content: space-between; }
-.service-detail-icon { display: grid; width: 3.25rem; height: 3.25rem; place-items: center; border-radius: 1rem; background: var(--foreground); color: white; }
+.service-detail-icon { display: inline-flex; color: var(--primary); }
 .service-detail-label { border-radius: 999px; background: var(--muted); padding: .5rem .75rem; color: var(--primary); font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .service-detail-card h3 { max-width: 13ch; margin-top: 4rem; font-size: 1.55rem; line-height: 1.15; font-weight: 820; letter-spacing: -.025em; }
 .service-detail-card p { max-width: 30rem; margin-top: 1rem; color: #626b85; line-height: 1.7; }

@@ -447,7 +447,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .catalog-load-more p { margin-top: .75rem; color: #778096; font-size: .7rem; }
 .catalog-load-more button { min-height: 46px; margin-top: 1rem; border: 1px solid #cfd6e3; background: white; padding: .7rem 1.3rem; color: var(--foreground); font-size: .78rem; font-weight: 850; transition: border-color .2s ease, color .2s ease, transform .2s ease; }
 .catalog-load-more button:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary); }
-.product-section-nav { position: sticky; z-index: 20; top: 108px; display: flex; gap: 1.75rem; margin-top: 3rem; border-block: 1px solid #dce2eb; background: rgba(246,247,249,.96); padding: .9rem 0; backdrop-filter: blur(12px); }
+.product-section-nav { display: flex; gap: 1.75rem; margin-top: 3rem; border-block: 1px solid #dce2eb; background: #f6f7f9; padding: .9rem 0; }
 .product-section-nav a { color: #657087; font-size: .75rem; font-weight: 850; }
 .product-section-nav a:hover { color: var(--primary); }
 #overview, #details, #related { scroll-margin-top: 10rem; }
@@ -488,7 +488,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
   .catalog-filter-row.is-open { display: grid; animation: menu-in .18s ease-out both; }
   .catalog-filter-title { display: none; }
   .filter-menu-trigger { border: 1px solid #e0e5ed; }
-  .product-section-nav { top: 76px; margin-top: 2rem; gap: 1.25rem; overflow-x: auto; padding-inline: .15rem; white-space: nowrap; }
+  .product-section-nav { margin-top: 2rem; gap: 1.25rem; overflow-x: auto; padding-inline: .15rem; white-space: nowrap; }
   .product-page { padding-bottom: 7rem; }
   .product-mobile-cta { position: fixed; z-index: 44; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: 1.35fr .65fr; gap: .45rem; border-top: 1px solid #d8dee8; background: rgba(255,255,255,.97); padding: .65rem max(.65rem, env(safe-area-inset-right)) max(.65rem, env(safe-area-inset-bottom)) max(.65rem, env(safe-area-inset-left)); box-shadow: 0 -12px 30px rgba(17,27,61,.11); backdrop-filter: blur(12px); }
   .product-mobile-cta a { display: grid; min-height: 48px; place-items: center; background: var(--primary); padding: .65rem; color: white; text-align: center; font-size: .74rem; font-weight: 850; }

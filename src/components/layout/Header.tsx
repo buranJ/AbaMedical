@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { categories } from "@/data/content";
 import { GlobalSearch } from "@/components/catalog/GlobalSearch";
@@ -15,8 +15,17 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(false);
   const [compact, setCompact] = useState(false);
+  const catalogCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
   const isActive = (href: string) => !href.includes("#") && (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const openCatalog = () => {
+    if (catalogCloseTimer.current) clearTimeout(catalogCloseTimer.current);
+    setCatalogOpen(true);
+  };
+  const closeCatalogSoon = () => {
+    if (catalogCloseTimer.current) clearTimeout(catalogCloseTimer.current);
+    catalogCloseTimer.current = setTimeout(() => setCatalogOpen(false), 400);
+  };
 
   useEffect(() => {
     const updateHeader = () => setCompact(window.scrollY > 36);
@@ -37,6 +46,10 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => () => {
+    if (catalogCloseTimer.current) clearTimeout(catalogCloseTimer.current);
+  }, []);
+
   return <header className={`site-header sticky top-0 z-50${compact ? " is-compact" : ""}`}>
     <div className="header-accent" aria-hidden />
     <div className="header-utility"><div className="container flex min-h-8 items-center justify-between gap-6"><p>Медицинские технологии для клиник Кыргызстана</p><div className="flex items-center gap-6"><a href={`mailto:${siteConfig.email}`}><Mail size={13} />{siteConfig.email}</a><span>{siteConfig.hours}</span></div></div></div>
@@ -44,9 +57,9 @@ export function Header() {
       <Link href="/" className="header-logo" aria-label="ABA Medical — главная"><Image src="/images/brand/logo-cropped.png" alt="ABA Medical" width={720} height={164} priority /></Link>
       <nav aria-label="Основная навигация" className="desktop-nav">
         <Link className={`nav-link${isActive("/") ? " nav-link-active" : ""}`} href="/">Главная</Link>
-        <div className="nav-catalog-shell" onMouseEnter={() => setCatalogOpen(true)} onMouseLeave={() => setCatalogOpen(false)} onFocus={() => setCatalogOpen(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setCatalogOpen(false); }}>
+        <div className="nav-catalog-shell" onMouseEnter={openCatalog} onMouseLeave={closeCatalogSoon} onFocus={openCatalog} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setCatalogOpen(false); }}>
           <Link className={`nav-link nav-catalog-link${pathname.startsWith("/catalog") ? " nav-link-active" : ""}`} href="/catalog" aria-expanded={catalogOpen}>Каталог <ChevronDown aria-hidden size={14} strokeWidth={2.2} /></Link>
-          {catalogOpen && <div className="catalog-mega-wrap"><div className="catalog-mega container">
+          {catalogOpen && <div className="catalog-mega-wrap" onMouseEnter={openCatalog} onMouseLeave={closeCatalogSoon}><div className="catalog-mega container">
             <div className="catalog-mega-intro"><p className="eyebrow">Каталог</p><h2>Решения по медицинским направлениям</h2><p>Оборудование, расходные материалы и сопровождение специалистов.</p><Link href="/catalog" onClick={() => setCatalogOpen(false)}>Весь каталог <ArrowUpRight size={17} /></Link></div>
             <div className="catalog-mega-grid">{categories.map((category) => <section key={category.slug}><Link className="catalog-mega-title" href={`/catalog/${category.slug}`} onClick={() => setCatalogOpen(false)}>{category.title}<ArrowUpRight size={16} /></Link><div>{category.subcategories.slice(0, 4).map((subcategory) => <Link href={`/catalog/${category.slug}/${subcategory.slug}`} key={subcategory.slug} onClick={() => setCatalogOpen(false)}>{subcategory.title}</Link>)}{category.subcategories.length === 0 && <span>{category.description}</span>}</div></section>)}</div>
           </div></div>}

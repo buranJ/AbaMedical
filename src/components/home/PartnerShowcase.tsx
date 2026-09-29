@@ -21,12 +21,10 @@ function PartnerGroup({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-export function PartnerShowcase() {
+export function PartnerShowcase({ heading = "Официальный представитель" }: { heading?: string | null }) {
   return (
-    <section className="partner-marquee-section" aria-label="Производители медицинского оборудования">
-      <div className="partner-marquee-heading">
-        <strong>Официальный представитель</strong>
-      </div>
+    <section className={`partner-marquee-section${heading ? "" : " partner-marquee-section-compact"}`} aria-label="Производители медицинского оборудования">
+      {heading && <div className="partner-marquee-heading"><strong>{heading}</strong></div>}
       <div className="partner-marquee-window">
         <div className="partner-marquee-track partner-marquee-track-main">
           <PartnerGroup />

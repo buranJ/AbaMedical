@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, GraduationCap, Handshake, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { PartnerShowcase } from "@/components/home/PartnerShowcase";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { createMetadata } from "@/lib/metadata";
 import { categories } from "@/data/content";
@@ -13,15 +14,6 @@ const strengths = [
   { icon: GraduationCap, title: "Обучение специалистов", text: "ABA Medical организует мастер-классы с участием хирургов и медицинских тренеров." },
   { icon: ShieldCheck, title: "Сопровождение поставки", text: "Подбор, консультация и сервисное сопровождение оборудования в рамках условий поставки." },
 ];
-const partnerLogos = [
-  ["Medtronic", "/images/partners/optimized/medtronic.png"],
-  ["Abbott", "/images/partners/optimized/abbott.png"],
-  ["Genoss", "/images/partners/optimized/genoss.png"],
-  ["Merit Medical", "/images/partners/optimized/merit-medical.png"],
-  ["St. Jude Medical", "/images/partners/optimized/st-jude-medical.png"],
-  ["Concept Medical", "/images/partners/optimized/concept-medical.png"],
-] as const;
-
 export default function AboutPage() {
   return <div>
     <section className="section"><div className="container">
@@ -36,7 +28,7 @@ export default function AboutPage() {
 
     <section className="section"><div className="container"><p className="eyebrow">Подход к работе</p><h2 className="heading mt-4 max-w-3xl">От выбора решения до его применения</h2><div className="brand-grid mt-10 grid gap-px border border-[var(--border)] bg-[var(--border)] md:grid-cols-3">{strengths.map(({ icon: Icon, title, text }) => <article className="bg-white p-7" key={title}><Icon className="text-[var(--primary)]" size={32} strokeWidth={1.6} /><h3 className="mt-8 text-xl font-bold">{title}</h3><p className="mt-3 leading-7 text-slate-600">{text}</p></article>)}</div></div></section>
 
-    <section className="border-y border-[var(--border)] bg-white py-14"><div className="container"><div className="grid gap-7 lg:grid-cols-[.7fr_1.3fr] lg:items-end"><div><p className="eyebrow">Партнёрства</p><h2 className="heading mobile-two-line mt-4"><span>Решения международных</span>{" "}<span>производителей</span></h2></div><p className="max-w-2xl leading-7 text-slate-600">Перед поставкой специалист поможет проверить комплектацию, совместимость и регистрационные документы. Подтверждающие материалы предоставляются по запросу.</p></div><div className="mt-9 grid grid-cols-2 gap-px border border-[var(--border)] bg-[var(--border)] sm:grid-cols-3 lg:grid-cols-6">{partnerLogos.map(([name, src]) => <div className="relative grid h-24 place-items-center bg-white px-5" key={name}><Image src={src} alt={name} width={170} height={60} className="max-h-12 w-auto max-w-full object-contain" /></div>)}</div></div></section>
+    <section className="about-partners border-y border-[var(--border)] bg-white py-14"><div className="container"><div className="grid gap-7 lg:grid-cols-[.9fr_1.1fr] lg:items-end"><div><p className="eyebrow">Партнёрства</p><h2 className="heading mobile-two-line mt-4"><span>Решения международных</span>{" "}<span>производителей</span></h2></div><p className="max-w-2xl leading-7 text-slate-600">Перед поставкой специалист поможет проверить комплектацию, совместимость и регистрационные документы. Подтверждающие материалы предоставляются по запросу.</p></div><div className="mt-9"><PartnerShowcase heading={null} /></div></div></section>
 
     <section className="about-directions"><div className="container"><div className="about-directions-head"><div><p className="eyebrow">Экспертиза</p><h2 className="heading mt-4">Пять медицинских направлений</h2></div><p>Каталог организован вокруг реальных задач клинических команд — от хирургии и кардиологии до контроля диабета.</p></div><div className="about-direction-links">{categories.map((category) => <Link href={`/catalog/${category.slug}`} key={category.slug}><span>{category.title}</span><ArrowRight size={18} /></Link>)}</div></div></section>
 

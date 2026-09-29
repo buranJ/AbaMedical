@@ -605,6 +605,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .about-mission::after { content: ""; position: absolute; top: 0; right: 0; width: 34%; height: 3px; background: var(--coral); }
 .about-mission .eyebrow { color: #b8def0; }
 .about-mission .heading { max-width: 18ch; }
+.about-partners .heading { max-width: 15ch; overflow-wrap: normal; font-size: clamp(2.5rem, 4vw, 4rem); }
 .about-directions { border-block: 1px solid #dbe1eb; background: #eef2f7; padding-block: clamp(4rem, 7vw, 6rem); }
 .about-directions-head { display: grid; gap: 1.5rem; align-items: end; }
 .about-directions-head > p { max-width: 34rem; color: #687187; line-height: 1.7; }
@@ -1038,6 +1039,8 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 
 /* Final partner treatment: continuous monochrome marquee. */
 .partner-marquee-section { overflow: hidden; background: #fff; padding-block: 2rem 2.5rem; }
+.partner-marquee-section-compact { padding-block: 0; }
+.partner-marquee-section-compact .partner-marquee-window { width: 100%; }
 .partner-marquee-heading { display: grid; justify-items: center; padding: 0 1rem 1.5rem; text-align: center; }
 .partner-marquee-heading strong { color: var(--foreground); font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1; letter-spacing: -.035em; }
 .partner-marquee-window { position: relative; width: min(1480px, calc(100% - 2rem)); overflow: hidden; margin-inline: auto; border-radius: 1.5rem; background: transparent; }

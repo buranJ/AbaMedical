@@ -135,7 +135,10 @@ button, input, textarea, select { font: inherit; }
 .product-facts > div { display: flex; min-width: 0; min-height: 126px; flex-direction: column; justify-content: flex-end; border-right: 1px solid #dce2ec; border-bottom: 1px solid #dce2ec; padding: 1rem; }
 .product-facts > div:nth-child(2n) { border-right: 0; }
 .product-facts > div:nth-last-child(-n + 2) { border-bottom: 0; }
-.product-facts svg { width: 2.5rem; height: 2.5rem; flex: none; margin-bottom: 1.25rem; background: var(--primary-deep); padding: .55rem; color: white; }
+.product-facts svg { width: 2.5rem; height: 2.5rem; flex: none; margin-bottom: 1.25rem; border: 1px solid #dbe2f2; background: var(--lavender-soft); padding: .55rem; color: var(--primary); }
+.product-facts > div:nth-child(2) svg { border-color: #d8edf6; background: var(--sky-soft); color: #4e9fc5; }
+.product-facts > div:nth-child(3) svg { border-color: #dddff3; background: #f3f1fb; color: #7379c4; }
+.product-facts > div:nth-child(4) svg { border-color: #f2dcd6; background: var(--coral-soft); color: #d57d68; }
 .product-facts p { color: #7b8499; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .product-facts strong { margin-top: .35rem; font-size: .95rem; }
 .product-copy { width: 100%; max-width: none; }

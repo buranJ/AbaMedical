@@ -36,13 +36,13 @@ export function Header() {
 
   useEffect(() => {
     if (!open) return;
-    const previousOverflow = document.body.style.overflow;
     const closeOnDesktop = () => { if (window.innerWidth >= 1024) setOpen(false); };
-    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
     window.addEventListener("resize", closeOnDesktop);
+    document.addEventListener("keydown", closeOnEscape);
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("resize", closeOnDesktop);
+      document.removeEventListener("keydown", closeOnEscape);
     };
   }, [open]);
 

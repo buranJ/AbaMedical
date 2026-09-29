@@ -468,8 +468,10 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 }
 @media (min-width: 1024px) {
   .proof-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .proof-grid article { border-right: 1px solid #dfe4ec; border-bottom: 0; }
+  .proof-grid article { min-height: 154px; border-right: 1px solid #dfe4ec; border-bottom: 0; padding: 1.15rem; }
+  .proof-grid strong { margin-top: 1.15rem; }
   .proof-grid article:last-child { border-right: 0; }
+  .product-intro > .heading { font-size: clamp(2.35rem, 3vw, 3rem); line-height: 1.02; letter-spacing: -.045em; text-wrap: pretty; }
 }
 @media (max-width: 767px) {
   .hero-image-label { display: none; }

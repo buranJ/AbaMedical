@@ -3,11 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Instagram, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { categories } from "@/data/content";
 import { GlobalSearch } from "@/components/catalog/GlobalSearch";
+import { TikTokIcon } from "@/components/ui/BrandIcons";
 
 const links = [["Главная", "/"], ["Услуги", "/services"], ["Новости", "/blog"], ["О компании", "/about"], ["Контакты", "/contacts"]];
 
@@ -71,6 +72,6 @@ export function Header() {
       <Link className="header-cta" href="/contacts#consultation">Консультация <ArrowUpRight size={17} /></Link>
       <button type="button" className="header-menu" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Закрыть меню" : "Открыть меню"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     </div>
-    {open && <nav id="mobile-menu" aria-label="Мобильная навигация" className="mobile-menu"><div className="mobile-menu-content"><Link href="/" aria-current={isActive("/") ? "page" : undefined} onClick={() => setOpen(false)}>Главная<ArrowUpRight size={17} /></Link><details className="mobile-catalog"><summary>Каталог <ChevronDown size={18} /></summary><div className="mobile-directions"><Link href="/catalog" onClick={() => setOpen(false)}>Весь каталог<ArrowUpRight size={15} /></Link>{categories.map((category) => <Link key={category.slug} href={`/catalog/${category.slug}`} onClick={() => setOpen(false)}>{category.title}</Link>)}</div></details>{links.slice(1).map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined} onClick={() => setOpen(false)}>{label}<ArrowUpRight size={17} /></Link>)}<div className="mobile-menu-actions"><Link className="mobile-menu-consultation" href="/contacts#consultation" onClick={() => setOpen(false)}>Получить консультацию<ArrowUpRight size={17} /></Link><a className="mobile-menu-phone" href={`tel:${siteConfig.phoneHref}`}><Phone size={17} />{siteConfig.phone}</a></div></div></nav>}
+    {open && <nav id="mobile-menu" aria-label="Мобильная навигация" className="mobile-menu"><div className="mobile-menu-content"><Link href="/" aria-current={isActive("/") ? "page" : undefined} onClick={() => setOpen(false)}>Главная<ArrowUpRight size={17} /></Link><details className="mobile-catalog"><summary>Каталог <ChevronDown size={18} /></summary><div className="mobile-directions"><Link href="/catalog" onClick={() => setOpen(false)}>Весь каталог<ArrowUpRight size={15} /></Link>{categories.map((category) => <Link key={category.slug} href={`/catalog/${category.slug}`} onClick={() => setOpen(false)}>{category.title}</Link>)}</div></details>{links.slice(1).map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined} onClick={() => setOpen(false)}>{label}<ArrowUpRight size={17} /></Link>)}<div className="mobile-menu-actions"><Link className="mobile-menu-consultation" href="/contacts#consultation" onClick={() => setOpen(false)}>Получить консультацию<ArrowUpRight size={17} /></Link><a className="mobile-menu-phone" href={`tel:${siteConfig.phoneHref}`}><Phone size={17} />{siteConfig.phone}</a></div><div className="mobile-menu-socials"><p>Мы в социальных сетях</p><div><a className="mobile-social-instagram" href={siteConfig.instagram} target="_blank" rel="noopener noreferrer" aria-label="ABA Medical в Instagram"><span><Instagram size={20} /></span>Instagram</a><a className="mobile-social-tiktok" href={siteConfig.tiktok} target="_blank" rel="noopener noreferrer" aria-label="ABA Medical в TikTok"><span><TikTokIcon width={19} height={19} /></span>TikTok</a><a className="mobile-social-whatsapp" href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Написать ABA Medical в WhatsApp"><span><MessageCircle size={20} /></span>WhatsApp</a></div></div></div></nav>}
   </header>;
 }

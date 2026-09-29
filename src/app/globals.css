@@ -1255,6 +1255,7 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
   .catalog-hero { padding-inline: 1.5rem; }
   .catalog-hero-title { font-size: clamp(1.42rem, 7.25vw, 2.75rem); line-height: 1.02; text-wrap: initial; }
   .catalog-hero-title span { display: block; white-space: nowrap; }
+  .product-intro > .heading { font-size: clamp(1.65rem, 7vw, 2rem); line-height: 1.02; letter-spacing: -.04em; text-wrap: pretty; }
 }
 
 /* Keep the catalog underline aligned to its label, excluding the chevron. */

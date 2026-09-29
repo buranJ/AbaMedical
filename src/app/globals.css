@@ -419,7 +419,8 @@ main > .section, main > div > .section:first-child { padding-top: clamp(3rem, 5v
 .product-card-body h3 { min-height: 3.05em; }
 .product-summary { min-height: 3.9em; }
 .product-card-media::before { content: ""; position: absolute; inset: 7%; border: 1px solid #edf0f4; background: white; }
-.product-card-media img, .product-card-media > span, .product-card-compare, .product-brand { z-index: 1; }
+.product-card-media img, .product-card-media > span, .product-brand { z-index: 1; }
+.product-card-compare { z-index: 6; }
 
 .trust-section { border-block: 1px solid #e0e5ed; background: #eef2f7; }
 .trust-layout { display: grid; gap: 2.5rem; align-items: stretch; }

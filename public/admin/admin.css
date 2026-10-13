@@ -1,0 +1,13 @@
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: #f4f6fa;
+}
+
+[class*="AppHeaderContent"] {
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, #8ac9ed, #7e87d2, #ef9b85) 1;
+}

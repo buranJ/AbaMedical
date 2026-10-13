@@ -1,0 +1,241 @@
+backend:
+  name: github
+  repo: buranJ/AbaMedical
+  branch: main
+  use_graphql: true
+
+locale: ru
+site_url: https://abamedical.netlify.app
+display_url: https://abamedical.netlify.app
+logo_url: /images/brand/logo-cropped.png
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: products
+    label: Товары
+    label_singular: Товар
+    folder: content/products
+    create: true
+    delete: true
+    extension: json
+    format: json
+    identifier_field: title
+    slug: "{{fields.slug}}"
+    summary: "{{title}} — {{brand}}"
+    sortable_fields: [title, brand, direction]
+    view_filters:
+      - label: Хирургия
+        field: direction
+        pattern: surgery
+      - label: Кардиология
+        field: direction
+        pattern: cardiology
+      - label: Сахарный диабет
+        field: direction
+        pattern: diabetes
+      - label: Нейрохирургия
+        field: direction
+        pattern: neurosurgery
+      - label: Анестезиология
+        field: direction
+        pattern: anesthesiology
+    fields:
+      - { label: Порядок в каталоге, name: order, widget: number, value_type: int, min: 1, default: 9999 }
+      - { label: Название, name: title, widget: string }
+      - label: Адрес страницы
+        name: slug
+        widget: string
+        hint: Только латинские буквы, цифры и дефисы. После публикации лучше не менять.
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Используйте латинские буквы, цифры и дефисы']
+      - { label: Производитель, name: brand, widget: string, required: false }
+      - label: Направление
+        name: direction
+        widget: select
+        options:
+          - { label: Хирургия, value: surgery }
+          - { label: Кардиология, value: cardiology }
+          - { label: Сахарный диабет, value: diabetes }
+          - { label: Нейрохирургия, value: neurosurgery }
+          - { label: Анестезиология, value: anesthesiology }
+      - { label: Код подкатегории, name: subcategory, widget: string, hint: Например pacemakers или ablation }
+      - { label: Название категории, name: categoryLabel, widget: string }
+      - { label: Краткое описание, name: summary, widget: text }
+      - label: Подробное описание
+        name: details
+        widget: list
+        required: false
+        field: { label: Абзац, name: paragraph, widget: text }
+      - { label: Главное изображение, name: image, widget: image, required: false }
+      - label: Галерея
+        name: gallery
+        widget: list
+        required: false
+        field: { label: Изображение, name: image, widget: image }
+      - { label: Старый адрес, name: legacyPath, widget: hidden, required: false }
+      - { label: Источник изображения, name: imageSource, widget: hidden, required: false }
+      - label: Источники галереи
+        name: gallerySources
+        widget: hidden
+        required: false
+
+  - name: news
+    label: Новости
+    label_singular: Новость
+    folder: content/news
+    create: true
+    delete: true
+    extension: json
+    format: json
+    identifier_field: title
+    slug: "{{fields.slug}}"
+    summary: "{{order}}. {{title}}"
+    sortable_fields: [order, title, date]
+    fields:
+      - { label: Порядок, name: order, widget: number, value_type: int, min: 1, default: 100 }
+      - { label: Заголовок, name: title, widget: string }
+      - label: Адрес страницы
+        name: slug
+        widget: string
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', 'Используйте латинские буквы, цифры и дефисы']
+      - { label: Краткое описание, name: excerpt, widget: text }
+      - { label: Дата, name: date, widget: datetime, required: false, date_format: DD.MM.YYYY, time_format: false }
+      - { label: Изображение, name: image, widget: image }
+      - { label: Пропорции изображения, name: imageAspect, widget: string, default: "16 / 9", hint: Например 16 / 9 или 1080 / 808 }
+      - label: Текст новости
+        name: body
+        widget: list
+        field: { label: Абзац, name: paragraph, widget: text }
+
+  - name: settings
+    label: Настройки сайта
+    delete: false
+    editor:
+      preview: false
+    files:
+      - label: Контакты и социальные сети
+        name: site
+        file: content/settings/site.json
+        fields:
+          - { label: Название компании, name: name, widget: string }
+          - { label: Юридическое название, name: legalName, widget: string }
+          - { label: Описание сайта, name: description, widget: text }
+          - { label: Основной телефон, name: phone, widget: string }
+          - { label: Телефон для ссылки, name: phoneHref, widget: string, hint: Например +996555291291 }
+          - { label: Дополнительный телефон, name: secondaryPhone, widget: string, required: false }
+          - { label: Email, name: email, widget: string }
+          - { label: Адрес, name: address, widget: string }
+          - { label: Улица и кабинет, name: streetAddress, widget: string }
+          - { label: Город, name: city, widget: string }
+          - { label: Рабочее время, name: hours, widget: string }
+          - { label: Рабочее время для поисковиков, name: openingHoursSchema, widget: string, hint: "Например Mo-Fr 09:00-18:00" }
+          - { label: URL карты, name: mapEmbedUrl, widget: string }
+          - { label: URL построения маршрута, name: mapRouteUrl, widget: string }
+          - { label: WhatsApp, name: whatsapp, widget: string }
+          - { label: Instagram, name: instagram, widget: string }
+          - { label: TikTok, name: tiktok, widget: string }
+
+      - label: Главная страница и слайдер
+        name: home
+        file: content/settings/home.json
+        fields:
+          - { label: Строка официального представителя, name: officialRepresentative, widget: text }
+          - label: Популярные товары
+            name: featuredSlugs
+            widget: list
+            field: { label: Адрес товара, name: slug, widget: string }
+          - label: Слайды
+            name: slides
+            widget: list
+            summary: "{{fields.title}} {{fields.accent}}"
+            fields:
+              - { label: Код слайда, name: id, widget: string }
+              - { label: Надзаголовок, name: eyebrow, widget: string }
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Акцентная часть, name: accent, widget: string }
+              - label: Заголовок на мобильном
+                name: mobileTitle
+                widget: list
+                min: 2
+                max: 2
+                field: { label: Строка, name: line, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - label: Основная кнопка
+                name: primaryAction
+                widget: object
+                fields:
+                  - { label: Текст, name: label, widget: string }
+                  - { label: Ссылка, name: href, widget: string }
+              - label: Дополнительная кнопка
+                name: secondaryAction
+                widget: object
+                fields:
+                  - { label: Текст, name: label, widget: string }
+                  - { label: Ссылка, name: href, widget: string }
+              - label: Преимущества
+                name: features
+                widget: list
+                field: { label: Текст, name: feature, widget: string }
+              - { label: Изображение, name: image, widget: image }
+              - { label: Описание изображения, name: imageAlt, widget: string }
+              - { label: Заголовок подписи, name: captionLabel, widget: string }
+              - { label: Подпись, name: caption, widget: string }
+          - { label: Фото блока о компании, name: trustImage, widget: image }
+          - { label: Описание фото, name: trustImageAlt, widget: string }
+          - { label: Заголовок на фото, name: trustCaptionTitle, widget: string }
+          - { label: Подпись на фото, name: trustCaptionText, widget: string }
+
+      - label: Каталог, FAQ и партнёры
+        name: catalog
+        file: content/settings/catalog.json
+        fields:
+          - label: Медицинские направления
+            name: categories
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Код, name: slug, widget: string }
+              - { label: Название, name: title, widget: string }
+              - { label: Описание, name: description, widget: text }
+              - { label: Изображение, name: image, widget: image, required: false }
+              - label: Подкатегории
+                name: subcategories
+                widget: list
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Код, name: slug, widget: string }
+                  - { label: Название, name: title, widget: string }
+                  - { label: Описание, name: description, widget: text }
+                  - label: Вложенные категории
+                    name: children
+                    widget: list
+                    required: false
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: Код, name: slug, widget: string }
+                      - { label: Название, name: title, widget: string }
+                      - { label: Описание, name: description, widget: text }
+                      - label: Третий уровень
+                        name: children
+                        widget: list
+                        required: false
+                        summary: "{{fields.title}}"
+                        fields:
+                          - { label: Код, name: slug, widget: string }
+                          - { label: Название, name: title, widget: string }
+                          - { label: Описание, name: description, widget: text }
+          - label: Частые вопросы
+            name: faq
+            widget: list
+            summary: "{{fields.question}}"
+            fields:
+              - { label: Вопрос, name: question, widget: string }
+              - { label: Ответ, name: answer, widget: text }
+          - label: Партнёры
+            name: partners
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Название, name: name, widget: string }
+              - { label: Логотип, name: image, widget: image }

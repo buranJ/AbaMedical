@@ -11,12 +11,18 @@ export interface Category {
   slug: DirectionId;
   title: string;
   description: string;
+  image?: string;
   subcategories: Subcategory[];
+}
+
+export interface Partner {
+  name: string;
+  image: string;
 }
 
 export interface Product {
   slug: string;
-  legacyPath: string;
+  legacyPath?: string;
   title: string;
   brand?: string;
   direction: DirectionId;

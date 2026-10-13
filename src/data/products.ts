@@ -1,4 +1,4 @@
-import rawProducts from "./legacy-products.generated.json";
+import rawProducts from "./products.generated.json";
 import type { Product } from "@/types/content";
 
 export const products = rawProducts as Product[];

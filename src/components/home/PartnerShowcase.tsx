@@ -1,20 +1,12 @@
 import Image from "next/image";
-
-const partners = [
-  { name: "Medtronic", src: "/images/partners/optimized/medtronic.png" },
-  { name: "Abbott", src: "/images/partners/optimized/abbott.png" },
-  { name: "Genoss", src: "/images/partners/optimized/genoss-transparent.png" },
-  { name: "Merit Medical", src: "/images/partners/optimized/merit-medical.png" },
-  { name: "St. Jude Medical", src: "/images/partners/optimized/st-jude-medical.png" },
-  { name: "Concept Medical", src: "/images/partners/optimized/concept-medical.png" },
-];
+import { partners } from "@/data/content";
 
 function PartnerGroup({ hidden = false }: { hidden?: boolean }) {
   return (
     <div className="partner-marquee-group" aria-hidden={hidden || undefined}>
       {partners.map((partner) => (
         <div className="partner-marquee-logo" key={partner.name}>
-          <Image src={partner.src} alt={hidden ? "" : partner.name} width={190} height={68} className="h-auto max-h-11 w-auto max-w-full object-contain" />
+          <Image src={partner.image} alt={hidden ? "" : partner.name} width={190} height={68} className="h-auto max-h-11 w-auto max-w-full object-contain" />
         </div>
       ))}
     </div>

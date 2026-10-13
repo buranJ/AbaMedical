@@ -4,60 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { useRef, useState } from "react";
+import homeContent from "@/data/home.generated.json";
 
-const slides = [
-  {
-    id: "result",
-    eyebrow: "ABA Medical",
-    title: "Технологии, которые работают",
-    accent: "на результат",
-    mobileTitle: ["Технологии, которые", "работают на результат"],
-    description:
-      "Оборудование и расходные материалы для клиник — от профессионального подбора до внедрения и обучения команды.",
-    primaryAction: { label: "Открыть каталог", href: "/catalog" },
-    secondaryAction: { label: "Обсудить задачу", href: "#consultation" },
-    features: ["Подбор комплектации", "Сервисное сопровождение"],
-    image: "/images/hero/generated/hero-operating-suite-hd.webp",
-    imageAlt: "Современная гибридная операционная",
-    captionLabel: "Комплексное оснащение",
-    caption: "От отдельного оборудования до решения для отделения",
-  },
-  {
-    id: "team",
-    eyebrow: "Оборудование · обучение · сервис",
-    title: "Сильная медицина начинается с",
-    accent: "точного решения",
-    mobileTitle: ["Сильная медицина", "начинается с решения"],
-    description:
-      "Помогаем специалистам выбрать технологию, подготовить команду и уверенно внедрить решение в клиническую практику.",
-    primaryAction: { label: "Получить консультацию", href: "#consultation" },
-    secondaryAction: { label: "Как мы работаем", href: "/services" },
-    features: ["Подбор под клиническую задачу", "Обучение медицинской команды", "Сопровождение на каждом этапе"],
-    image: "/images/hero/generated/hero-clinical-team-hd.webp",
-    imageAlt: "Медицинская команда в современной операционной",
-    captionLabel: "Команда и практика",
-    caption: "От выбора технологии до уверенной работы специалистов",
-  },
-  {
-    id: "technology",
-    eyebrow: "Медицинские технологии",
-    title: "Оборудование для уверенной",
-    accent: "клинической работы",
-    mobileTitle: ["Точное оборудование", "для клинической работы"],
-    description:
-      "Современные решения для хирургии, кардиологии, нейрохирургии, анестезиологии и контроля диабета.",
-    primaryAction: { label: "Найти оборудование", href: "/catalog" },
-    secondaryAction: { label: "Все направления", href: "#directions" },
-    features: ["Хирургия", "Кардиология", "Нейрохирургия"],
-    image: "/images/hero/generated/hero-navigation-system-hd.webp",
-    imageAlt: "Современная медицинская навигационная система",
-    captionLabel: "Высокая точность",
-    caption: "Точная визуализация для сложных процедур",
-  },
-] as const;
-
-const officialRepresentative =
-  "Официальный представитель крупнейших производителей медицинского оборудования и расходных материалов";
+const { slides, officialRepresentative } = homeContent;
 
 export function HeroShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);

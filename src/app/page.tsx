@@ -10,14 +10,10 @@ import { siteConfig } from "@/config/site";
 import { safeJsonLd } from "@/lib/metadata";
 import { HeroShowcase } from "@/components/home/HeroShowcase";
 import { PartnerShowcase } from "@/components/home/PartnerShowcase";
+import homeContent from "@/data/home.generated.json";
 
-const featuredSlugs = [
-  "628711016-355907973891-insulinovaya-pompa",
-  "628587038-926775995101-energeticheskaya-platforma-valleylab-ft1",
-  "628721518-902257232661-stealthstation-s8",
-];
+const { featuredSlugs } = homeContent;
 const icons = { surgery: Scissors, cardiology: HeartPulse, diabetes: Syringe, neurosurgery: Brain, anesthesiology: Wind };
-const directionImages = { surgery: "/images/directions/surgery.webp", cardiology: "/images/directions/cardiology.webp", diabetes: "/images/directions/diabetes.webp", neurosurgery: "/images/directions/neurosurgery.webp", anesthesiology: "/images/directions/anesthesiology.webp" };
 export default function HomePage() {
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) };
   const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)).filter(Boolean);
@@ -29,14 +25,14 @@ export default function HomePage() {
 
     <section className="section" id="directions"><div className="container">
       <div className="max-w-3xl"><p className="eyebrow">Каталог</p><h2 className="heading mt-4">Оборудование по направлениям</h2></div>
-      <div className="category-bento mt-10">{categories.map((category, index) => { const Icon = icons[category.slug]; return <Link className={`category-tile category-tile-${index + 1} group`} key={category.slug} href={`/catalog/${category.slug}`}><Image src={directionImages[category.slug]} alt="" fill quality={90} sizes="(max-width: 768px) 100vw, 50vw" className="content-photo object-cover transition duration-700 group-hover:scale-105" /><div className="category-shade" /><div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8"><div className="flex items-start justify-between"><span className="category-icon"><Icon size={22} strokeWidth={1.8} /></span></div><div><h3 className="text-2xl font-extrabold text-white">{category.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-white/72">{category.description}</p><span className="category-open">Открыть направление <ArrowRight size={16} /></span></div></div></Link>; })}</div>
+      <div className="category-bento mt-10">{categories.map((category, index) => { const Icon = icons[category.slug]; return <Link className={`category-tile category-tile-${index + 1} group`} key={category.slug} href={`/catalog/${category.slug}`}>{category.image && <Image src={category.image} alt="" fill quality={90} sizes="(max-width: 768px) 100vw, 50vw" className="content-photo object-cover transition duration-700 group-hover:scale-105" />}<div className="category-shade" /><div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8"><div className="flex items-start justify-between"><span className="category-icon"><Icon size={22} strokeWidth={1.8} /></span></div><div><h3 className="text-2xl font-extrabold text-white">{category.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-white/72">{category.description}</p><span className="category-open">Открыть направление <ArrowRight size={16} /></span></div></div></Link>; })}</div>
       <div className="mt-7"><ButtonLink href="/catalog" variant="secondary">Перейти в каталог</ButtonLink></div>
     </div></section>
 
     <section className="section bg-white"><div className="container"><div className="flex flex-wrap items-end justify-between gap-5"><div><p className="eyebrow">Ассортимент</p><h2 className="heading mt-4">Популярное оборудование</h2></div><Link className="text-link" href="/catalog">Смотреть все <ArrowRight size={18} /></Link></div><div className="modern-card-grid mt-10 grid gap-6 lg:grid-cols-3">{featured.map((product) => <ProductCard key={product!.slug} product={product!} />)}</div></div></section>
 
     <section className="section trust-section"><div className="container">
-      <div className="trust-layout"><div className="trust-story"><p className="eyebrow">ABA Medical</p><h2 className="heading mobile-two-line mt-4"><span>Не просто поставка, а</span>{" "}<span>решение для клиники</span></h2><p className="lede mt-5">Соединяем медицинские технологии, практические знания и сопровождение специалистов.</p><div className="mt-8"><ButtonLink href="/about" variant="secondary">Подробнее о компании</ButtonLink></div></div><div className="trust-photo relative overflow-hidden"><Image src="/images/company/clinic-implementation.webp" alt="Специалист и врач проверяют комплексное оснащение операционной" fill quality={90} sizes="(max-width: 1024px) 100vw, 48vw" className="clinic-implementation-photo object-cover" /><div><strong>Комплексное оснащение</strong><span>От подбора оборудования до запуска решения в клинике</span></div></div></div>
+      <div className="trust-layout"><div className="trust-story"><p className="eyebrow">ABA Medical</p><h2 className="heading mobile-two-line mt-4"><span>Не просто поставка, а</span>{" "}<span>решение для клиники</span></h2><p className="lede mt-5">Соединяем медицинские технологии, практические знания и сопровождение специалистов.</p><div className="mt-8"><ButtonLink href="/about" variant="secondary">Подробнее о компании</ButtonLink></div></div><div className="trust-photo relative overflow-hidden"><Image src={homeContent.trustImage} alt={homeContent.trustImageAlt} fill quality={90} sizes="(max-width: 1024px) 100vw, 48vw" className="clinic-implementation-photo object-cover" /><div><strong>{homeContent.trustCaptionTitle}</strong><span>{homeContent.trustCaptionText}</span></div></div></div>
       <div className="proof-grid"><article><PackageCheck /><strong>5 медицинских направлений</strong><p>Структурированный каталог оборудования и расходных материалов.</p></article><article><ShieldCheck /><strong>Подбор под задачу</strong><p>Специалист помогает проверить назначение, совместимость и комплектацию.</p></article><article><GraduationCap /><strong>Обучение специалистов</strong><p>Профессиональные мероприятия и практический обмен опытом.</p></article><article><Wrench /><strong>Сопровождение</strong><p>Поддержка по условиям поставки и дальнейшей эксплуатации.</p></article></div>
     </div></section>
 

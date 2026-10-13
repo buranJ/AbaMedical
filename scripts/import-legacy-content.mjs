@@ -159,8 +159,14 @@ const products = await Promise.all(
   }),
 );
 
-await mkdir(path.join(root, "src/data"), { recursive: true });
-await writeFile(path.join(root, "src/data/legacy-products.generated.json"), `${JSON.stringify(products, null, 2)}\n`);
+const productsContentPath = path.join(root, "content", "products");
+await mkdir(productsContentPath, { recursive: true });
+await Promise.all(products.map((product, index) =>
+  writeFile(
+    path.join(productsContentPath, `${product.slug}.json`),
+    `${JSON.stringify({ order: index + 1, ...product }, null, 2)}\n`,
+  ),
+));
 
 const productImages = products.flatMap((product) =>
   (product.gallery || []).map((image, index) => ({ image, imageSource: product.gallerySources[index] })),

@@ -1,0 +1,19 @@
+{
+  "name": "ABA Medical",
+  "legalName": "ОсОО «ABA Medical»",
+  "description": "Медицинское оборудование и расходные материалы для клиник и специалистов Кыргызстана.",
+  "phone": "+996 555 291 291",
+  "phoneHref": "+996555291291",
+  "secondaryPhone": "+996 555 710 865",
+  "email": "info@abamed.kg",
+  "address": "Кыргызстан, Бишкек, ул. Исанова 79, каб. 801",
+  "streetAddress": "ул. Исанова 79, каб. 801",
+  "city": "Бишкек",
+  "hours": "Понедельник–пятница, 09:00–18:00",
+  "openingHoursSchema": "Mo-Fr 09:00-18:00",
+  "mapEmbedUrl": "https://yandex.ru/map-widget/v1/?mode=search&text=%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA%2C%20%D1%83%D0%BB.%20%D0%98%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079&z=17&lang=ru_RU",
+  "mapRouteUrl": "https://yandex.ru/maps/?mode=routes&rtext=~%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA%2C%20%D1%83%D0%BB.%20%D0%98%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079&rtt=auto",
+  "whatsapp": "https://wa.me/996555291291",
+  "instagram": "https://instagram.com/abamedicalkg",
+  "tiktok": "https://www.tiktok.com/@abamedical.kg"
+}

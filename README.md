@@ -20,9 +20,11 @@ Copy `.env.example` to `.env.local` for local configuration. `NEXT_PUBLIC_SITE_U
 
 ## Content architecture
 
-Typed editorial content is in `src/data/content.ts`; the legacy catalog is in `src/data/legacy-products.generated.json`. Interfaces live in `src/types/content.ts`, so a later CMS adapter can replace local data without changing page components.
+Editable content is stored in `content/`: products and news use one JSON file per entry, while contacts, categories, FAQ and partners live in `content/settings/`. `npm run content:build` validates and collects these files into generated JSON consumed by the typed adapters in `src/data/`.
 
-`scripts/import-legacy-content.mjs` is the reproducible migration utility. It reads the Tilda product sitemap, imports titles and legacy paths, and downloads selected owned assets to `public/images`. Do not run it automatically in production.
+The browser-based content manager is available at `/admin/`. It uses GitHub as the content store and Netlify for OAuth and deployment, so it does not need a separate application server or database. See `ADMIN_SETUP.md` for the one-time authentication setup.
+
+`scripts/import-legacy-content.mjs` is the reproducible migration utility. It reads the Tilda product sitemap, imports titles and legacy paths into `content/products/`, and downloads selected owned assets to `public/images`. Do not run it automatically in production.
 
 ## SEO and migration
 
